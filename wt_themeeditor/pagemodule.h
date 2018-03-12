@@ -4,6 +4,11 @@
 #include <QStackedWidget>
 #include <QWidget>
 
+#include "pagegreet.h"
+#include "pageicon.h"
+#include "pagetheme.h"
+#include "pageothers.h"
+
 class PageModule:public QStackedWidget
 {
 public:
@@ -11,6 +16,15 @@ public:
     ~PageModule();
 
     void init();
+
+
+    PageGreet *pageGreet;
+    PageIcon *pageIcon;
+    PageTheme *pageTheme;
+    PageOthers *pageOthers;
+
+private:
+    void initConnects();
 };
 
 #endif // PAGEMODULE_H

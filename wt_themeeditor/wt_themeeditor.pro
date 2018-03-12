@@ -33,7 +33,11 @@ SOURCES += \
     networkmodule.cpp \
     pagemodule.cpp \
     mainstatusbar.cpp \
-    maintoolsbar.cpp
+    maintoolsbar.cpp \
+    pagegreet.cpp \
+    pageicon.cpp \
+    pagetheme.cpp \
+    pageothers.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -44,4 +48,8 @@ HEADERS += \
     networkmodule.h \
     pagemodule.h \
     mainstatusbar.h \
-    maintoolsbar.h
+    maintoolsbar.h \
+    pagegreet.h \
+    pageicon.h \
+    pagetheme.h \
+    pageothers.h
