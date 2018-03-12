@@ -1,7 +1,10 @@
 #include "pagemodule.h"
 
-PageModule::PageModule():QStackedWidget(NULL)
-{
+PageModule::PageModule(QWidget *parent):QStackedWidget(parent){
+
+}
+
+PageModule::~PageModule(){
 
 }
 

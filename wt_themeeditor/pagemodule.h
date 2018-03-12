@@ -7,7 +7,7 @@
 class PageModule:public QStackedWidget
 {
 public:
-    PageModule();
+    explicit PageModule(QWidget *parent = 0);
     ~PageModule();
 
     void init();
