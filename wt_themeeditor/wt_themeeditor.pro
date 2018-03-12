@@ -37,7 +37,9 @@ SOURCES += \
     pagegreet.cpp \
     pageicon.cpp \
     pagetheme.cpp \
-    pageothers.cpp
+    pageothers.cpp \
+    utillogger.cpp \
+    utilfunctrace.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -52,4 +54,6 @@ HEADERS += \
     pagegreet.h \
     pageicon.h \
     pagetheme.h \
-    pageothers.h
+    pageothers.h \
+    utillogger.h \
+    utilfunctrace.h

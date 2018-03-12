@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "utilfunctrace.h"
 
 void MainWindow::init(){
     mLayout = new QHBoxLayout();
@@ -18,6 +19,7 @@ void MainWindow::init(){
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
+    DEBUGPRINT
     MainWindow::init();
 }
 
