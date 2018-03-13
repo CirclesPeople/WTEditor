@@ -26,9 +26,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    scriptadb.cpp \
     tabmodule.cpp \
-    scriptmodule.cpp \
     sqlmodule.cpp \
     networkmodule.cpp \
     pagemodule.cpp \
@@ -38,13 +36,12 @@ SOURCES += \
     pageicon.cpp \
     pagetheme.cpp \
     pageothers.cpp \
-    mainmenubar.cpp
+    mainmenubar.cpp \
+    utiladb.cpp
 
 HEADERS += \
         mainwindow.h \
-    scriptadb.h \
     tabmodule.h \
-    scriptmodule.h \
     sqlmodule.h \
     networkmodule.h \
     pagemodule.h \
@@ -54,4 +51,5 @@ HEADERS += \
     pageicon.h \
     pagetheme.h \
     pageothers.h \
-    mainmenubar.h
+    mainmenubar.h \
+    utiladb.h
