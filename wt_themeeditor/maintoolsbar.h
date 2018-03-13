@@ -2,8 +2,9 @@
 #define MAINTOOLSBAR_H
 
 #include <QWidget>
+#include <QToolBar>
 
-class MainToolsBar : public QWidget
+class MainToolsBar : public QToolBar
 {
     Q_OBJECT
 public:

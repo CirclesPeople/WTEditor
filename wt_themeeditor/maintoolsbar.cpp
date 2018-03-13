@@ -1,6 +1,6 @@
 #include "maintoolsbar.h"
 
-MainToolsBar::MainToolsBar(QWidget *parent) : QWidget(parent)
+MainToolsBar::MainToolsBar(QWidget *parent) : QToolBar(parent)
 {
 
 }

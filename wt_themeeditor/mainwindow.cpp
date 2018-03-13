@@ -27,12 +27,19 @@ void MainWindow::init(){
     mWidget->setLayout(mLayout);
     setCentralWidget(mWidget);
 
+    //添加菜单栏
+    mainMenuBar =new MainMenuBar();
+    setMenuBar(mainMenuBar);
+
+
     //添加工具栏
+    mainToolsBar = new MainToolsBar();
+    addToolBar(mainToolsBar);
 
 
     //添加状态栏
-
-
+    mainStatusBar = new MainStatusBar();
+    setStatusBar(mainStatusBar);
 
 
 

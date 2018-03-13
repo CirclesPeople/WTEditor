@@ -37,7 +37,8 @@ SOURCES += \
     pagegreet.cpp \
     pageicon.cpp \
     pagetheme.cpp \
-    pageothers.cpp
+    pageothers.cpp \
+    mainmenubar.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -52,4 +53,5 @@ HEADERS += \
     pagegreet.h \
     pageicon.h \
     pagetheme.h \
-    pageothers.h
+    pageothers.h \
+    mainmenubar.h

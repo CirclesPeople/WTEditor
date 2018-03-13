@@ -2,8 +2,9 @@
 #define MAINSTATUSBAR_H
 
 #include <QWidget>
+#include <QStatusBar>
 
-class MainStatusBar : public QWidget
+class MainStatusBar : public QStatusBar
 {
     Q_OBJECT
 public:

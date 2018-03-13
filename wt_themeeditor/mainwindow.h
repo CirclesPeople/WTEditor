@@ -10,6 +10,7 @@
 #include <pagemodule.h>
 #include <maintoolsbar.h>
 #include <mainstatusbar.h>
+#include <mainmenubar.h>
 
 class MainWindow : public QMainWindow
 {
@@ -23,6 +24,7 @@ public:
     PageModule *pageStackedWidget;
     MainToolsBar *mainToolsBar;
     MainStatusBar *mainStatusBar;
+    MainMenuBar *mainMenuBar;
 
 private:
     void init();

@@ -1,6 +1,6 @@
 #include "mainstatusbar.h"
 
-MainStatusBar::MainStatusBar(QWidget *parent) : QWidget(parent)
+MainStatusBar::MainStatusBar(QWidget *parent) : QStatusBar(parent)
 {
 
 }
