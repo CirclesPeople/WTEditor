@@ -6,10 +6,12 @@
 #include <QObject>
 #include <QVBoxLayout>
 
+#include <pagemodule.h>
+
 class TabModule : public QVBoxLayout
 {
 public:
-    TabModule();
+    TabModule(PageModule *pageStackedWidget);
 
 
     QPushButton *greetBtn;
@@ -17,8 +19,11 @@ public:
     QPushButton *themeBtn;
     QPushButton *othersBtn;
 
+    PageModule *mPageModule;
+
 private:
     void init();
+
 };
 
 #endif // TABMODULE_H

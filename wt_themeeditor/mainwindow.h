@@ -4,9 +4,12 @@
 #include <QMainWindow>
 #include<QHBoxLayout>
 #include<QVBoxLayout>
+#include<QWidget>
 
 #include <tabmodule.h>
 #include <pagemodule.h>
+#include <maintoolsbar.h>
+#include <mainstatusbar.h>
 
 class MainWindow : public QMainWindow
 {
@@ -18,9 +21,12 @@ public:
 
     TabModule *tabLayout;
     PageModule *pageStackedWidget;
+    MainToolsBar *mainToolsBar;
+    MainStatusBar *mainStatusBar;
 
 private:
     void init();
+    QWidget *mWidget;
     QHBoxLayout *mLayout;
     QHBoxLayout *pageLayout;
 };

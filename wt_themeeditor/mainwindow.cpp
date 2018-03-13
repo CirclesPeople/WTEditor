@@ -1,25 +1,47 @@
 #include "mainwindow.h"
-#include "utilfunctrace.h"
 
 void MainWindow::init(){
+    qDebug("MainWindow::init()");
+
+    setFixedSize(800,600);
+
+    //创建centralwidget
+    mWidget = new QWidget(this);
+    //创建横向布局管理器
     mLayout = new QHBoxLayout();
+
+    //mLayout->addStretch();  // 添加伸缩
+
+    //创建分页模块
     pageStackedWidget = new PageModule();
+    pageStackedWidget->autoFillBackground();
     pageLayout = new QHBoxLayout();
     pageLayout->addWidget(pageStackedWidget);
-    pageStackedWidget->autoFillBackground();
-    tabLayout = new TabModule();
 
+    //创建tab模块
+    tabLayout = new TabModule(pageStackedWidget);
+
+    //添加布局
     mLayout->addLayout(tabLayout);
     mLayout->addLayout(pageLayout);
+    mWidget->setLayout(mLayout);
+    setCentralWidget(mWidget);
 
-    setLayout(mLayout);
+    //添加工具栏
+
+
+    //添加状态栏
+
+
+
+
+
 }
 
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
-    DEBUGPRINT
     MainWindow::init();
 }
 

@@ -17,11 +17,15 @@ public:
 
     void init();
 
-
     PageGreet *pageGreet;
     PageIcon *pageIcon;
     PageTheme *pageTheme;
     PageOthers *pageOthers;
+
+    void setGreetPage();
+    void setIconPage();
+    void setThemePage();
+    void setOthersPage();
 
 private:
     void initConnects();
