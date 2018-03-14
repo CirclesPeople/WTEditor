@@ -14,11 +14,11 @@ void UtilADB::init(){
 
 }
 
-void UtilADB::adbCheck(){
+void UtilADB::adbDevice(){
     adbProcess.start(ADB);
     if(!adbProcess.waitForFinished(-1))
     {
-      return;
+        return;
     }
     else
     {
@@ -29,7 +29,29 @@ void UtilADB::adbCheck(){
     }
 }
 
-int UtilADB::getADBConnStatus(){
+void UtilADB::getADBProcessInfo(){
 
-    return 0;
 }
+
+void adbPush(){
+
+}
+void adbPull(){
+
+}
+
+void adbInstall(){
+
+}
+void adbShell(){
+
+}
+void getADBProcessInfo(){
+
+}
+
+void enterRecoveryMode(){}
+
+void enterFastbootMode(){}
+void enterFactoryMode(){}
+void screenShot(){}

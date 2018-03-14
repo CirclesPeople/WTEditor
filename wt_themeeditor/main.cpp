@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "qlogging.h"
+#include "config.h"
 
 #include <QApplication>
 #include <QFile>
@@ -54,6 +55,8 @@ int main(int argc, char *argv[])
     //注册MessageHandler,輸出log到log.txt
     qInstallMessageHandler(outputMessage);
     qDebug("****** main ******");
+    Config config;
+    config.mSettings->setValue("test","test");
 
     QApplication a(argc, argv);
     MainWindow w;

@@ -9,8 +9,16 @@ public:
     UtilADB();
 
     void init();
-    void adbCheck();
-    int getADBConnStatus();
+    void adbDevice();
+    void adbPush();
+    void adbPull();
+    void adbInstall();
+    void adbShell();
+    void getADBProcessInfo();
+    void enterRecoveryMode();
+    void enterFastbootMode();
+    void enterFactoryMode();
+    void screenShot();
 
     QProcess adbProcess;
 };

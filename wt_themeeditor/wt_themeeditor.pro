@@ -37,7 +37,8 @@ SOURCES += \
     pagetheme.cpp \
     pageothers.cpp \
     mainmenubar.cpp \
-    utiladb.cpp
+    utiladb.cpp \
+    config.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -52,4 +53,5 @@ HEADERS += \
     pagetheme.h \
     pageothers.h \
     mainmenubar.h \
-    utiladb.h
+    utiladb.h \
+    config.h
