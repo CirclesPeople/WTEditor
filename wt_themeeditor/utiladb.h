@@ -2,9 +2,11 @@
 #define UTILADB_H
 
 #include <QProcess>
+#include <QObject>
 
-class UtilADB
+class UtilADB:public QObject
 {
+    Q_OBJECT
 public:
     UtilADB();
 
@@ -19,8 +21,9 @@ public:
     void enterFastbootMode();
     void enterFactoryMode();
     void screenShot();
+    void readFromProcess();
 
-    QProcess adbProcess;
+    QProcess *adbProcess;
 };
 
 #endif // UTILADB_H
