@@ -51,25 +51,39 @@ void UtilADB::getADBProcessInfo(){
 
 }
 
-void adbPush(){
+void UtilADB::adbPush(QString *pathFrom,QString *pathTo){
+    QString command(ADB_PUSH);
+    command = command.append(pathFrom).append(pathTo);
+
+    adbProcess->setProcessChannelMode(QProcess::MergedChannels);
+    adbProcess->start(command);
+
+    connect(adbProcess, &QProcess::readyRead, this, &UtilADB::readFromProcess);
+    if(!adbProcess->waitForFinished(-1))
+    {
+        return;
+    }
+    else
+    {
+        QString output =QString::fromLocal8Bit(adbProcess->readAllStandardOutput());
+        QStringList OUT = output.split("\n");
+        qDebug()<<OUT;
+
+    }
+}
+void UtilADB::adbPull(){
 
 }
-void adbPull(){
+
+void UtilADB::adbInstall(){
+
+}
+void UtilADB::adbShell(){
 
 }
 
-void adbInstall(){
+void UtilADB::enterRecoveryMode(){}
 
-}
-void adbShell(){
-
-}
-void getADBProcessInfo(){
-
-}
-
-void enterRecoveryMode(){}
-
-void enterFastbootMode(){}
-void enterFactoryMode(){}
-void screenShot(){}
+void UtilADB::enterFastbootMode(){}
+void UtilADB::enterFactoryMode(){}
+void UtilADB::screenShot(){}

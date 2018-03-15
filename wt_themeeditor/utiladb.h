@@ -12,7 +12,7 @@ public:
 
     void init();
     void adbDevice();
-    void adbPush();
+    void adbPush(QString *pathFrom,QString *pathTo);
     void adbPull();
     void adbInstall();
     void adbShell();
