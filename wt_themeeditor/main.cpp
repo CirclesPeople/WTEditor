@@ -55,9 +55,12 @@ int main(int argc, char *argv[])
     //注册MessageHandler,輸出log到log.txt
     qInstallMessageHandler(outputMessage);
     qDebug("****** main ******");
+
+    qDebug("nitialise settings.");
     Config config;
     config.mSettings->setValue("test","test");
 
+    qDebug("show MainWindow.");
     QApplication a(argc, argv);
     MainWindow w;
     w.show();

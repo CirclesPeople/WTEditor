@@ -21,6 +21,8 @@ public:
     void enterFastbootMode();
     void enterFactoryMode();
     void screenShot();
+
+private:
     void readFromProcess();
 
     QProcess *adbProcess;

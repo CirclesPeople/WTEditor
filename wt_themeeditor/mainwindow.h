@@ -11,6 +11,7 @@
 #include <maintoolsbar.h>
 #include <mainstatusbar.h>
 #include <mainmenubar.h>
+#include <utiladb.h>
 
 class MainWindow : public QMainWindow
 {
@@ -31,6 +32,7 @@ private:
     QWidget *mWidget;
     QHBoxLayout *mLayout;
     QHBoxLayout *pageLayout;
+    UtilADB *utilADB;
 };
 
 #endif // MAINWINDOW_H

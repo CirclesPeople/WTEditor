@@ -5,43 +5,44 @@ void MainWindow::init(){
 
     setFixedSize(800,600);
 
-    //创建centralwidget
+    /* create centralwidget */
     mWidget = new QWidget(this);
-    //创建横向布局管理器
+
+    /* create horizontal layout */
     mLayout = new QHBoxLayout();
 
-    //mLayout->addStretch();  // 添加伸缩
+    //mLayout->addStretch();  /* add stretch */
 
-    //创建分页模块
+    /* add pags module */
     pageStackedWidget = new PageModule();
     pageStackedWidget->autoFillBackground();
     pageLayout = new QHBoxLayout();
     pageLayout->addWidget(pageStackedWidget);
 
-    //创建tab模块
+    /* add tab module */
     tabLayout = new TabModule(pageStackedWidget);
 
-    //添加布局
+    /* add layout */
     mLayout->addLayout(tabLayout);
     mLayout->addLayout(pageLayout);
     mWidget->setLayout(mLayout);
     setCentralWidget(mWidget);
 
-    //添加菜单栏
+    /* add menu bar */
     mainMenuBar =new MainMenuBar();
     setMenuBar(mainMenuBar);
 
-
-    //添加工具栏
+    /* adb tools bar */
     mainToolsBar = new MainToolsBar();
     addToolBar(mainToolsBar);
 
-
-    //添加状态栏
+    /* add status bar */
     mainStatusBar = new MainStatusBar();
     setStatusBar(mainStatusBar);
 
-
+    /* get UtilADB's pointer */
+    utilADB = new UtilADB();
+    utilADB->adbDevice();
 
 }
 
@@ -49,7 +50,7 @@ void MainWindow::init(){
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
-    MainWindow::init();
+    init();
 }
 
 MainWindow::~MainWindow()
