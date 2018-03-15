@@ -10,8 +10,10 @@ class UtilADB:public QObject
 public:
     UtilADB();
 
+    QStringList outputList;
+
     void init();
-    void adbDevice();
+    QStringList adbDevice();
     void adbPush(QString *pathFrom,QString *pathTo);
     void adbPull();
     void adbInstall();
@@ -24,6 +26,7 @@ public:
 
 private:
     void readFromProcess();
+    bool isAdbConnect();
 
     QProcess *adbProcess;
 };

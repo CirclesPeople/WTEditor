@@ -13,44 +13,37 @@
 #define ADB_REBOOT_FASTBOOT "adb reboot fastboot"
 #define ADB_REBOOT_RESET "adb reboot reset"
 
-
-UtilADB::UtilADB()
-{
-    init();
-}
-
 void UtilADB::init(){
-    adbProcess = new QProcess();
-
+    if(adbProcess != NULL){
+        adbProcess = new QProcess();
+    }
 }
 
-void UtilADB::readFromProcess(){
-
+void UtilADB::readFromProcess()
+{
+    QString output = QString::fromUtf8(adbProcess->readAll());
+    outputList = output.split(",");
+    qDebug() << "readFromProcess()" << "outputList's size is " << outputList.size();
+    foreach(QString str, outputList){
+        qDebug(str.toLocal8Bit().data());
+    }
 }
-
-void UtilADB::adbDevice(){
+/* execute adb command "adb push xxx" */
+QStringList UtilADB::adbDevice(){
 
     adbProcess->setProcessChannelMode(QProcess::MergedChannels);
     adbProcess->start(ADB_DEVICES);
 
     connect(adbProcess, &QProcess::readyRead, this, &UtilADB::readFromProcess);
-    if(!adbProcess->waitForFinished(-1))
-    {
-        return;
-    }
-    else
-    {
-        QString output =QString::fromLocal8Bit(adbProcess->readAllStandardOutput());
-        QStringList OUT = output.split("\n");
-        qDebug()<<OUT;
 
-    }
+    return outputList;
 }
 
 void UtilADB::getADBProcessInfo(){
 
 }
 
+/* execute adb command "adb push xxx" */
 void UtilADB::adbPush(QString *pathFrom,QString *pathTo){
     QString command(ADB_PUSH);
     command = command.append(pathFrom).append(pathTo);
@@ -59,17 +52,6 @@ void UtilADB::adbPush(QString *pathFrom,QString *pathTo){
     adbProcess->start(command);
 
     connect(adbProcess, &QProcess::readyRead, this, &UtilADB::readFromProcess);
-    if(!adbProcess->waitForFinished(-1))
-    {
-        return;
-    }
-    else
-    {
-        QString output =QString::fromLocal8Bit(adbProcess->readAllStandardOutput());
-        QStringList OUT = output.split("\n");
-        qDebug()<<OUT;
-
-    }
 }
 void UtilADB::adbPull(){
 
@@ -87,3 +69,12 @@ void UtilADB::enterRecoveryMode(){}
 void UtilADB::enterFastbootMode(){}
 void UtilADB::enterFactoryMode(){}
 void UtilADB::screenShot(){}
+
+bool isAdbConnect();
+
+
+
+UtilADB::UtilADB()
+{
+    init();
+}

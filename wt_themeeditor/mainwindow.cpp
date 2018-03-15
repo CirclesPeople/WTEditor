@@ -42,7 +42,12 @@ void MainWindow::init(){
 
     /* get UtilADB's pointer */
     utilADB = new UtilADB();
-    utilADB->adbDevice();
+    QStringList outputList = utilADB->adbDevice();
+    if(outputList.size() == 1){
+        mainStatusBar->statusLabel->setText("No device is connected.");
+    }else{
+        mainStatusBar->statusLabel->setWindowTitle("test");
+    }
 
 }
 
