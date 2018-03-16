@@ -24,6 +24,9 @@ public:
     void enterFactoryMode();
     void screenShot();
 
+signals:
+    void adbProcInfo(const QStringList outputList);
+
 private:
     void readFromProcess(const int flag);
     bool isAdbConnect();

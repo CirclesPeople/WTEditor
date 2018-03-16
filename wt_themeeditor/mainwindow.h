@@ -29,6 +29,8 @@ public:
 
 private:
     void init();
+    void initConnects();
+    void onADBProcInfo(const QStringList outputList);
     QWidget *mWidget;
     QHBoxLayout *mLayout;
     QHBoxLayout *pageLayout;

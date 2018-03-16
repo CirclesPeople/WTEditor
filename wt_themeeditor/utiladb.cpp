@@ -32,40 +32,50 @@ void UtilADB::init(){
 void UtilADB::readFromProcess(const int flag)
 {
     QString output = QString::fromUtf8(adbProcess->readAll());
-    outputList = output.split(",");
-    qDebug() << "readFromProcess()" << "outputList's size is " << outputList.size();
-    foreach(QString str, outputList){
-        qDebug(str.toLocal8Bit().data());
-    }
+    qDebug() << output;
+    outputList = output.split("\r\n");
+    qDebug() << "readFromProcess()" << "flag is " << flag << "; outputList's size is " << outputList.size();
+
+
     switch (flag) {
     case ADB_DEVICES_FLAG:
-        qDebug() << "+++ADB_DEVICES_FLAG+++";
+        qDebug() <<"readFromProcess" << "+++ADB_DEVICES_FLAG+++";
+        emit adbProcInfo(outputList);
+
         break;
     case ADB_SHELL_FLAG:
+        qDebug() << "+++ADB_SHELL_FLAG+++";
 
         break;
     case ADB_LOGCAT_FLAG:
+        qDebug() << "+++ADB_LOGCAT_FLAG+++";
 
         break;
     case ADB_PUSH_FLAG:
+        qDebug() << "+++ADB_PUSH_FLAG+++";
 
         break;
     case ADB_PULL_FLAG:
+        qDebug() << "+++ADB_PULL_FLAG+++";
 
         break;
     case ADB_INSTALL_FLAG:
+        qDebug() << "+++ADB_INSTALL_FLAG+++";
 
         break;
     case ADB_UNINSTALL_FLAG:
+        qDebug() << "+++ADB_UNINSTALL_FLAG+++";
 
         break;
     case ADB_REBOOT_RECOVERY_FLAG:
+        qDebug() << "+++ADB_REBOOT_RECOVERY_FLAG+++";
 
         break;
     case ADB_REBOOT_FASTBOOT_FLAG:
-
+        qDebug() << "+++ADB_REBOOT_FASTBOOT_FLAG+++";
         break;
     case ADB_REBOOT_RESET_FLAG:
+        qDebug() << "+++ADB_REBOOT_RESET_FLAG+++";
 
         break;
     default:

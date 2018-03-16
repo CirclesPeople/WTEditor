@@ -3,8 +3,9 @@
 #define CONFIG_PATH "config.ini"
 
 #include <QSettings>
+#include <QObject>
 
-class Config
+class Config : public QObject
 {
 public:
     Config();

@@ -2,12 +2,6 @@
 
 #include <QMenu>
 
-MainMenuBar::MainMenuBar(QWidget *parent):QMenuBar(parent)
-{
-    init();
-}
-
-
 void MainMenuBar::init()
 {
 
@@ -26,8 +20,6 @@ void MainMenuBar::init()
     fileMenu->addSeparator();
 
     QMenu *toolsMenu=addMenu("Tools");
-    toolsMenu->addAction("ADB Check");
-    toolsMenu->addSeparator();
     toolsMenu->addAction("Mobile Assistant");
     toolsMenu->addSeparator();
     toolsMenu->addAction("Reset");
@@ -54,4 +46,9 @@ void MainMenuBar::init()
     QMenu *helpMenu=addMenu("Help");
     helpMenu->addAction("About");
 
+}
+
+MainMenuBar::MainMenuBar(QWidget *parent):QMenuBar(parent)
+{
+    init();
 }
