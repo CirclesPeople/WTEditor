@@ -3,15 +3,25 @@
 #include <QDebug>
 
 #define ADB_DEVICES "adb devices"
+#define ADB_DEVICES_FLAG 1
 #define ADB_SHELL "adb shell"
+#define ADB_SHELL_FLAG 2
 #define ADB_LOGCAT "adb logcat"
+#define ADB_LOGCAT_FLAG 3
 #define ADB_PUSH "adb push"
+#define ADB_PUSH_FLAG 4
 #define ADB_PULL "adb PULL"
+#define ADB_PULL_FLAG 5
 #define ADB_INSTALL "adb install"
+#define ADB_INSTALL_FLAG 6
 #define ADB_UNINSTALL "adb uninstall"
+#define ADB_UNINSTALL_FLAG 7
 #define ADB_REBOOT_RECOVERY "adb reboot recovery"
+#define ADB_REBOOT_RECOVERY_FLAG 8
 #define ADB_REBOOT_FASTBOOT "adb reboot fastboot"
+#define ADB_REBOOT_FASTBOOT_FLAG 9
 #define ADB_REBOOT_RESET "adb reboot reset"
+#define ADB_REBOOT_RESET_FLAG 10
 
 void UtilADB::init(){
     if(adbProcess != NULL){
@@ -19,7 +29,7 @@ void UtilADB::init(){
     }
 }
 
-void UtilADB::readFromProcess()
+void UtilADB::readFromProcess(const int flag)
 {
     QString output = QString::fromUtf8(adbProcess->readAll());
     outputList = output.split(",");
@@ -27,16 +37,51 @@ void UtilADB::readFromProcess()
     foreach(QString str, outputList){
         qDebug(str.toLocal8Bit().data());
     }
+    switch (flag) {
+    case ADB_DEVICES_FLAG:
+        qDebug() << "+++ADB_DEVICES_FLAG+++";
+        break;
+    case ADB_SHELL_FLAG:
+
+        break;
+    case ADB_LOGCAT_FLAG:
+
+        break;
+    case ADB_PUSH_FLAG:
+
+        break;
+    case ADB_PULL_FLAG:
+
+        break;
+    case ADB_INSTALL_FLAG:
+
+        break;
+    case ADB_UNINSTALL_FLAG:
+
+        break;
+    case ADB_REBOOT_RECOVERY_FLAG:
+
+        break;
+    case ADB_REBOOT_FASTBOOT_FLAG:
+
+        break;
+    case ADB_REBOOT_RESET_FLAG:
+
+        break;
+    default:
+        break;
+    }
 }
-/* execute adb command "adb push xxx" */
-QStringList UtilADB::adbDevice(){
+/* execute adb command "adb devices" */
+void UtilADB::adbDevice(){
 
     adbProcess->setProcessChannelMode(QProcess::MergedChannels);
     adbProcess->start(ADB_DEVICES);
 
-    connect(adbProcess, &QProcess::readyRead, this, &UtilADB::readFromProcess);
+    connect(adbProcess, &QProcess::readyRead, [=](){
+        readFromProcess(ADB_DEVICES_FLAG);
+    });
 
-    return outputList;
 }
 
 void UtilADB::getADBProcessInfo(){
@@ -51,7 +96,9 @@ void UtilADB::adbPush(QString *pathFrom,QString *pathTo){
     adbProcess->setProcessChannelMode(QProcess::MergedChannels);
     adbProcess->start(command);
 
-    connect(adbProcess, &QProcess::readyRead, this, &UtilADB::readFromProcess);
+    /*connect(adbProcess, &QProcess::readyRead, [=](){
+        //readFromProcess(ADB_DEVICES_FLAG);
+    });*/
 }
 void UtilADB::adbPull(){
 

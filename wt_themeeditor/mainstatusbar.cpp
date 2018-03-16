@@ -2,14 +2,12 @@
 
 MainStatusBar::MainStatusBar(QWidget *parent) : QStatusBar(parent)
 {
-init();
+    init();
 }
 
 void MainStatusBar::init(){
     statusLabel=new QLabel("developed by bill");
     statusLabel->setAlignment(Qt::AlignVCenter|Qt::AlignRight);
-    statusLabel->setMargin(5);
-    addWidget(statusLabel);
-
-
+    statusLabel->setMargin(1);
+    addPermanentWidget(statusLabel);
 }

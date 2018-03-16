@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 
+#include <QDebug>
+
 void MainWindow::init(){
     qDebug("MainWindow::init()");
 
@@ -42,12 +44,9 @@ void MainWindow::init(){
 
     /* get UtilADB's pointer */
     utilADB = new UtilADB();
-    QStringList outputList = utilADB->adbDevice();
-    if(outputList.size() == 1){
-        mainStatusBar->statusLabel->setText("No device is connected.");
-    }else{
-        mainStatusBar->statusLabel->setWindowTitle("test");
-    }
+            mainStatusBar->statusLabel->setText("No device is connected.");
+    utilADB->adbDevice();
+
 
 }
 

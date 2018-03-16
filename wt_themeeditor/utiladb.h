@@ -13,7 +13,7 @@ public:
     QStringList outputList;
 
     void init();
-    QStringList adbDevice();
+    void adbDevice();
     void adbPush(QString *pathFrom,QString *pathTo);
     void adbPull();
     void adbInstall();
@@ -25,7 +25,7 @@ public:
     void screenShot();
 
 private:
-    void readFromProcess();
+    void readFromProcess(const int flag);
     bool isAdbConnect();
 
     QProcess *adbProcess;
