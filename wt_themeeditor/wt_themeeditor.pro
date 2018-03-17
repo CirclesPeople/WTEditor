@@ -38,7 +38,9 @@ SOURCES += \
     pageothers.cpp \
     mainmenubar.cpp \
     utiladb.cpp \
-    config.cpp
+    config.cpp \
+    testmainwindow.cpp \
+    baseiconwidget.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -54,4 +56,9 @@ HEADERS += \
     pageothers.h \
     mainmenubar.h \
     utiladb.h \
-    config.h
+    config.h \
+    testmainwindow.h \
+    baseiconwidget.h
+
+FORMS += \
+    testmainwindow.ui
