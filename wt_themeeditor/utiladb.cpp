@@ -31,7 +31,7 @@ void UtilADB::init(){
 
 void UtilADB::readFromProcess(const int flag)
 {
-    QString output = QString::fromUtf8(adbProcess->readAll());
+    QString output = QString::fromUtf8(adbProcess->readAll()).trimmed();
     qDebug() << output;
     outputList = output.split("\r\n");
     qDebug() << "readFromProcess()" << "flag is " << flag << "; outputList's size is " << outputList.size();

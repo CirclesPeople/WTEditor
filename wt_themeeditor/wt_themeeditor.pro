@@ -40,7 +40,42 @@ SOURCES += \
     utiladb.cpp \
     config.cpp \
     testmainwindow.cpp \
-    baseiconwidget.cpp
+    baseiconwidget.cpp \
+    baseiconwidget.cpp \
+    config.cpp \
+    main.cpp \
+    mainmenubar.cpp \
+    mainstatusbar.cpp \
+    maintoolsbar.cpp \
+    mainwindow.cpp \
+    networkmodule.cpp \
+    pagegreet.cpp \
+    pageicon.cpp \
+    pagemodule.cpp \
+    pageothers.cpp \
+    pagetheme.cpp \
+    sqlmodule.cpp \
+    tabmodule.cpp \
+    testmainwindow.cpp \
+    utiladb.cpp \
+    baseiconwidget.cpp \
+    config.cpp \
+    main.cpp \
+    mainmenubar.cpp \
+    mainstatusbar.cpp \
+    maintoolsbar.cpp \
+    mainwindow.cpp \
+    networkmodule.cpp \
+    pagegreet.cpp \
+    pageicon.cpp \
+    pagemodule.cpp \
+    pageothers.cpp \
+    pagetheme.cpp \
+    sqlmodule.cpp \
+    tabmodule.cpp \
+    testmainwindow.cpp \
+    utiladb.cpp \
+    stylehelper.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -58,7 +93,47 @@ HEADERS += \
     utiladb.h \
     config.h \
     testmainwindow.h \
-    baseiconwidget.h
+    baseiconwidget.h \
+    baseiconwidget.h \
+    config.h \
+    mainmenubar.h \
+    mainstatusbar.h \
+    maintoolsbar.h \
+    mainwindow.h \
+    networkmodule.h \
+    pagegreet.h \
+    pageicon.h \
+    pagemodule.h \
+    pageothers.h \
+    pagetheme.h \
+    sqlmodule.h \
+    tabmodule.h \
+    testmainwindow.h \
+    utiladb.h \
+    baseiconwidget.h \
+    config.h \
+    mainmenubar.h \
+    mainstatusbar.h \
+    maintoolsbar.h \
+    mainwindow.h \
+    networkmodule.h \
+    pagegreet.h \
+    pageicon.h \
+    pagemodule.h \
+    pageothers.h \
+    pagetheme.h \
+    sqlmodule.h \
+    tabmodule.h \
+    testmainwindow.h \
+    utiladb.h
 
 FORMS += \
     testmainwindow.ui
+
+RESOURCES += \
+    qsrc/qss.qrc \
+    qsrc/main.qrc \
+    qsrc/wt_editor_style.qrc
+
+DISTFILES += \
+    qsrc/main.rc

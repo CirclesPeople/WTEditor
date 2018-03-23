@@ -10,6 +10,8 @@
 #include <QTextStream>
 #include <QDateTime>
 
+#include "StyleHelper.cpp"
+
 void outputMessage(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
     static QMutex mutex;
@@ -55,6 +57,9 @@ int main(int argc, char *argv[])
     //注册MessageHandler,輸出log到log.txt
     qInstallMessageHandler(outputMessage);
     qDebug("****** main ******");
+
+    // 加载QSS样式
+    StyleHelper::setStyle(":/qsrc/qss/flatwhite.css");
 
     qDebug("nitialise settings.");
     Config config;

@@ -2,12 +2,21 @@
 #define BASEICONWIDGET_H
 
 #include <QObject>
+#include <QLabel>
 #include <QWidget>
 
-class BaseIconWidget
+class BaseIconWidget : public QLabel
 {
+    Q_OBJECT
+
 public:
-    BaseIconWidget();
+    BaseIconWidget(const QString iconName);
+
+
+private:
+    QString mIconName;
+
+    void init();
 };
 
 #endif // BASEICONWIDGET_H

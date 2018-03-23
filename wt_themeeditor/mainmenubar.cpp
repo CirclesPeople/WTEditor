@@ -18,6 +18,10 @@ void MainMenuBar::init()
     fileMenu->addSeparator();
     fileMenu->addAction("Tutorial");
     fileMenu->addSeparator();
+    fileMenu->addAction("Apply");
+    fileMenu->addSeparator();
+    fileMenu->addAction("Apply All");
+    fileMenu->addSeparator();
 
     QMenu *toolsMenu=addMenu("Tools");
     toolsMenu->addAction("Mobile Assistant");
