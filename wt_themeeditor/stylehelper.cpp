@@ -8,7 +8,8 @@ public:
     static void setStyle(const QString &style) {
         QFile qss(style);
         qss.open(QFile::ReadOnly);
-        //qApp->setStyleSheet(qss.readAll());
+        QString str = QLatin1String(qss.readAll());
+        //qApp->setStyleSheet(str);
         qss.close();
     }
 };
