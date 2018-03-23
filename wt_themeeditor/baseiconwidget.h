@@ -17,6 +17,9 @@ private:
     QString mIconName;
 
     void init();
+
+protected:
+
 };
 
 #endif // BASEICONWIDGET_H
