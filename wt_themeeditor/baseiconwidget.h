@@ -18,8 +18,6 @@ private:
 
     void init();
 
-protected:
-
 };
 
 #endif // BASEICONWIDGET_H

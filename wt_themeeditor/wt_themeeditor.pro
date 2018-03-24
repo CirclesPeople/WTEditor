@@ -75,7 +75,8 @@ SOURCES += \
     tabmodule.cpp \
     testmainwindow.cpp \
     utiladb.cpp \
-    stylehelper.cpp
+    stylehelper.cpp \
+    windowicon.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -125,7 +126,8 @@ HEADERS += \
     sqlmodule.h \
     tabmodule.h \
     testmainwindow.h \
-    utiladb.h
+    utiladb.h \
+    windowicon.h
 
 FORMS += \
     testmainwindow.ui
