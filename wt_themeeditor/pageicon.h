@@ -5,8 +5,9 @@
 #include <QWidget>
 #include <QGridLayout>
 #include <QVBoxLayout>
-
+#include <QScrollArea>
 #include "baseiconwidget.h"
+#include "windowicon.h"
 
 class PageIcon:public QWidget
 {
@@ -15,7 +16,11 @@ public:
     ~PageIcon();
 
 private:
+    WindowIcon *mWindowIcon;
+
+    QVBoxLayout *mVBLayout;
     QGridLayout *mGridLayout;
+    QScrollArea *mScrollArea;
 
     BaseIconWidget *mPhoneIcon;
     BaseIconWidget *mContactsIcon;
@@ -25,6 +30,7 @@ private:
     BaseIconWidget *mCameraIcon;
     BaseIconWidget *mGalleryIcon;
     BaseIconWidget *mMusicIcon;
+    BaseIconWidget *mCalendarIcon;
 
     void init();
 };

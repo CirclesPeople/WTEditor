@@ -1,5 +1,12 @@
 QPalette{background:#FFFFFF;}*{outline:0px;color:#57595B;}
 
+BaseIconWidget{
+background: white;
+border: 1px solid rgb(41, 57, 85);
+border-radius: 5px;
+font-weight: bold;
+}
+
 QWidget[form="true"],QLabel[frameShape="1"]{
 border:1px solid #B6B6B6;
 border-radius:0px;

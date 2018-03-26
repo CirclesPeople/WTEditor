@@ -1,5 +1,16 @@
 QPalette{background:#444444;}*{outline:0px;color:#DCDCDC;}
 
+BaseIconWidget{
+background: white;
+border: 1px dashed #242424;
+border-radius: 5px;
+font-weight: bold;
+}
+
+TabModule{
+background: #242424;
+}
+
 QWidget[form="true"],QLabel[frameShape="1"]{
 border:1px solid #242424;
 border-radius:0px;

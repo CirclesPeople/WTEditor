@@ -12,12 +12,16 @@ class BaseIconWidget : public QLabel
 public:
     BaseIconWidget(const QString iconName);
 
-
 private:
     QString mIconName;
 
     void init();
 
+signals:
+    void onClicked();
+
+protected:
+    void mouseReleaseEvent(QMouseEvent *event);
 };
 
 #endif // BASEICONWIDGET_H

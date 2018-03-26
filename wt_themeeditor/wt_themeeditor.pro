@@ -75,7 +75,6 @@ SOURCES += \
     tabmodule.cpp \
     testmainwindow.cpp \
     utiladb.cpp \
-    stylehelper.cpp \
     windowicon.cpp
 
 HEADERS += \

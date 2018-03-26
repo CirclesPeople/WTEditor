@@ -3,5 +3,6 @@
         <file>qss/style_demo.qss</file>
         <file>qss/flatwhite.css</file>
         <file>qss/psblack.css</file>
+        <file>main.ico</file>
     </qresource>
 </RCC>

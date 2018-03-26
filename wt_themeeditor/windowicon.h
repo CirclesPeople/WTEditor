@@ -7,10 +7,11 @@
 
 #include "baseiconwidget.h"
 
-class WindowIcon:public QLabel
+class WindowIcon:public QWidget
 {
 public:
-    WindowIcon();
+    WindowIcon(QWidget *parent = 0);
+    void showIconWindow();
 
 private:
     QGridLayout *mGridLayout;

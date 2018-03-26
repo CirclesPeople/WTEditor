@@ -3,19 +3,18 @@
 #include <QMargins>
 #include <QLabel>
 #include <QPalette>
-#include <QScrollArea>
-
-PageIcon::PageIcon(QWidget *parent):QWidget(parent)
-{
-    init();
-}
 
 void PageIcon::init(){
 
+
+
+    mWindowIcon = new WindowIcon();
+    mVBLayout = new QVBoxLayout();
     mGridLayout = new QGridLayout();
+    mScrollArea = new QScrollArea();
 
     mPhoneIcon = new BaseIconWidget(QObject::tr("Phone"));
-    connect(mPhoneIcon,)
+    connect(mPhoneIcon,&BaseIconWidget::onClicked,mWindowIcon,&WindowIcon::showIconWindow);
 
     mContactsIcon = new BaseIconWidget(QObject::tr("Contacts"));
     mMessagingIcon = new BaseIconWidget(QObject::tr("Messaging"));
@@ -24,6 +23,7 @@ void PageIcon::init(){
     mCameraIcon = new BaseIconWidget(QObject::tr("Cmamera"));
     mGalleryIcon = new BaseIconWidget(QObject::tr("Gallery"));
     mMusicIcon = new BaseIconWidget(QObject::tr("Music"));
+    mCalendarIcon = new BaseIconWidget(QObject::tr("Calendar"));
 
     mGridLayout->addWidget(mPhoneIcon,0,0,Qt::AlignCenter);
     mGridLayout->addWidget(mContactsIcon,0,1,Qt::AlignCenter);
@@ -35,8 +35,17 @@ void PageIcon::init(){
     mGridLayout->addWidget(mGalleryIcon,1,2,Qt::AlignCenter);
     mGridLayout->addWidget(mMusicIcon,1,3,Qt::AlignCenter);
 
-    setLayout(mGridLayout);
+     mGridLayout->addWidget(mCalendarIcon,2,3,Qt::AlignCenter);
 
+    mScrollArea->setLayout(mGridLayout);
+    mVBLayout->addWidget(mScrollArea);
+    setLayout(mVBLayout);
+
+}
+
+PageIcon::PageIcon(QWidget *parent):QWidget(parent)
+{
+    init();
 }
 
 PageIcon::~PageIcon(){

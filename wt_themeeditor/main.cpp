@@ -10,8 +10,6 @@
 #include <QTextStream>
 #include <QDateTime>
 
-#include "StyleHelper.cpp"
-
 void outputMessage(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
     static QMutex mutex;
@@ -59,7 +57,9 @@ int main(int argc, char *argv[])
     qDebug("****** main ******");
 
     // 加载QSS样式
-    StyleHelper::setStyle(":/qsrc/qss/flatwhite.css");
+    QFile qss(":/qsrc/qss/psblack.css");
+    qss.open(QFile::ReadOnly);
+    QString str = QLatin1String(qss.readAll());
 
     qDebug("nitialise settings.");
     Config config;
@@ -67,7 +67,12 @@ int main(int argc, char *argv[])
 
     qDebug("show MainWindow.");
     QApplication a(argc, argv);
+
+    a.setStyleSheet(str);
+    qss.close();
+
     MainWindow w;
+    w.setWindowIcon(QIcon(":/qsrc/main.ico"));
     w.show();
 
     return a.exec();
