@@ -18,7 +18,7 @@ private:
     BaseIconWidget *defaultIcon;
     BaseIconWidget *defaultIconM;
     BaseIconWidget *defaultIconH;
-    BaseIconWidget *nweIcon;
+    BaseIconWidget *newIcon;
     BaseIconWidget *newIconM;
     BaseIconWidget *newIconH;
     QLabel *arrow;
@@ -30,7 +30,8 @@ private:
     QLabel *labelH;
 
     void init();
-
+protected:
+    bool eventFilter(QObject *watched, QEvent *event);
 };
 
 #endif // WINDOWICON_H

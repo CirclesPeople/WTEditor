@@ -22,7 +22,6 @@ signals:
 
 protected:
     void mouseReleaseEvent(QMouseEvent *event);
-    bool eventFilter(QObject *watched, QEvent *event);
 };
 
 #endif // BASEICONWIDGET_H

@@ -1,5 +1,6 @@
 #include "baseiconwidget.h"
 #include <QDebug>
+#include <QEvent>
 
 void BaseIconWidget::mouseReleaseEvent(QMouseEvent *event){
     qDebug() << "left";
@@ -15,6 +16,4 @@ BaseIconWidget::BaseIconWidget(const QString iconName)
 void BaseIconWidget::init(){
     setAlignment(Qt::AlignCenter);
     setFixedSize(120,120);
-    installEventFilter(this);
-    setAcceptDrops(true);
 }
