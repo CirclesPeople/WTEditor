@@ -14,12 +14,28 @@ void WindowIcon::init(){
     nweIcon = new BaseIconWidget(QObject::tr("new"));
     newIconM = new BaseIconWidget(QObject::tr("newM"));
     newIconH = new BaseIconWidget(QObject::tr("newH"));
-    arrow =new QLabel("->");
-    arrowM =new QLabel("->");
-    arrowH =new QLabel("->");
+    arrow =new QLabel();
+    arrow->setPixmap(QPixmap(":/qsrc/image/arrow.ico"));
+    arrowM =new QLabel();
+    arrowM->setPixmap(QPixmap(":/qsrc/image/arrow.ico"));
+    arrowH =new QLabel();
+    arrowH->setPixmap(QPixmap(":/qsrc/image/arrow.ico"));
+    QFont ft;
+    ft.setPointSize(16);
+    ft.setBold(true);
+
+    QPalette pa;
+    pa.setColor(QPalette::WindowText,QColor(Qt::black));
+
     label = new QLabel("480P");
+    label->setFont(ft);
+    label->setPalette(pa);
     labelM = new QLabel("720P");
+    labelM->setFont(ft);
+    labelM->setPalette(pa);
     labelH = new QLabel("1080P");
+    labelH->setFont(ft);
+    labelH->setPalette(pa);
 
     mGridLayout->addWidget(label,0,0,Qt::AlignCenter);
     mGridLayout->addWidget(labelM,1,0,Qt::AlignCenter);

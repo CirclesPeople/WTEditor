@@ -5,10 +5,7 @@ background: white;
 border: 1px dashed #242424;
 border-radius: 5px;
 font-weight: bold;
-}
-
-TabModule{
-background: #242424;
+image:url(:/qsrc/image/no-img.png)
 }
 
 QWidget[form="true"],QLabel[frameShape="1"]{

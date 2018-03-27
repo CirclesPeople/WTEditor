@@ -31,7 +31,7 @@ private:
     void init();
     void initConnects();
     void onADBProcInfo(const QStringList outputList);
-    QWidget *mWidget;
+    QWidget *mWindowWidget;
     QHBoxLayout *mLayout;
     QHBoxLayout *pageLayout;
     UtilADB *utilADB;

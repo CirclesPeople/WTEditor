@@ -4,5 +4,12 @@
         <file>qss/flatwhite.css</file>
         <file>qss/psblack.css</file>
         <file>main.ico</file>
+        <file>image/arrow.ico</file>
+        <file>image/icon.ico</file>
+        <file>image/greet.ico</file>
+        <file>image/others.ico</file>
+        <file>image/theme.ico</file>
+        <file>image/no-img.png</file>
+        <file>image/logo.png</file>
     </qresource>
 </RCC>

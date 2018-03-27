@@ -10,6 +10,7 @@
 
 class TabModule : public QVBoxLayout
 {
+    Q_OBJECT
 public:
     TabModule(PageModule *pageStackedWidget);
 

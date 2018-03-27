@@ -15,4 +15,6 @@ BaseIconWidget::BaseIconWidget(const QString iconName)
 void BaseIconWidget::init(){
     setAlignment(Qt::AlignCenter);
     setFixedSize(120,120);
+    installEventFilter(this);
+    setAcceptDrops(true);
 }

@@ -6,9 +6,12 @@ void MainWindow::init(){
     qDebug("MainWindow::init()");
 
     setFixedSize(800,600);
+    QPalette mPalette = this->palette();
+    mPalette.setBrush(QPalette::Background, Qt::white);
+    setPalette(mPalette);
 
     /* create centralwidget */
-    mWidget = new QWidget(this);
+    mWindowWidget = new QWidget(this);
 
     /* create horizontal layout */
     mLayout = new QHBoxLayout();
@@ -27,8 +30,8 @@ void MainWindow::init(){
     /* add layout */
     mLayout->addLayout(tabLayout);
     mLayout->addLayout(pageLayout);
-    mWidget->setLayout(mLayout);
-    setCentralWidget(mWidget);
+    mWindowWidget->setLayout(mLayout);
+    setCentralWidget(mWindowWidget);
 
     /* add menu bar */
     mainMenuBar =new MainMenuBar();
