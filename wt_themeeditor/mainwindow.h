@@ -11,7 +11,7 @@
 #include <maintoolsbar.h>
 #include <mainstatusbar.h>
 #include <mainmenubar.h>
-#include <utiladb.h>
+#include <utils/utiladb.h>
 
 class MainWindow : public QMainWindow
 {

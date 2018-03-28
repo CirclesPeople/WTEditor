@@ -5,7 +5,7 @@
 #include <QGridLayout>
 #include <QLabel>
 
-#include "baseiconwidget.h"
+#include "base/baseiconwidget.h"
 
 class WindowIcon:public QWidget
 {

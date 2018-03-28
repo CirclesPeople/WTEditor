@@ -4,10 +4,10 @@
 #include <QStackedWidget>
 #include <QWidget>
 
-#include "pagegreet.h"
-#include "pageicon.h"
-#include "pagetheme.h"
-#include "pageothers.h"
+#include "pages/pagegreet.h"
+#include "pages/pageicon.h"
+#include "pages/pagetheme.h"
+#include "pages/pageothers.h"
 
 class PageModule:public QStackedWidget
 {

@@ -1,6 +1,6 @@
 #include "tabmodule.h"
 #include "pagemodule.h"
-#include "pagegreet.h"
+#include "pages/pagegreet.h"
 
 #include <QVBoxLayout>
 

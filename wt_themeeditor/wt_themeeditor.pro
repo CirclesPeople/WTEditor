@@ -24,109 +24,43 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-        main.cpp \
-        mainwindow.cpp \
-    tabmodule.cpp \
-    sqlmodule.cpp \
-    networkmodule.cpp \
-    pagemodule.cpp \
-    mainstatusbar.cpp \
-    maintoolsbar.cpp \
-    pagegreet.cpp \
-    pageicon.cpp \
-    pagetheme.cpp \
-    pageothers.cpp \
-    mainmenubar.cpp \
-    utiladb.cpp \
-    config.cpp \
-    testmainwindow.cpp \
-    baseiconwidget.cpp \
-    baseiconwidget.cpp \
-    config.cpp \
+    base/baseiconwidget.cpp \
+    configs/config.cpp \
+    data/sqlmodule.cpp \
+    icon/windowicon.cpp \
+    network/networkmodule.cpp \
+    pages/pagegreet.cpp \
+    pages/pageicon.cpp \
+    pages/pageothers.cpp \
+    pages/pagetheme.cpp \
+    test/testmainwindow.cpp \
+    utils/utiladb.cpp \
     main.cpp \
     mainmenubar.cpp \
     mainstatusbar.cpp \
     maintoolsbar.cpp \
     mainwindow.cpp \
-    networkmodule.cpp \
-    pagegreet.cpp \
-    pageicon.cpp \
     pagemodule.cpp \
-    pageothers.cpp \
-    pagetheme.cpp \
-    sqlmodule.cpp \
-    tabmodule.cpp \
-    testmainwindow.cpp \
-    utiladb.cpp \
-    baseiconwidget.cpp \
-    config.cpp \
-    main.cpp \
-    mainmenubar.cpp \
-    mainstatusbar.cpp \
-    maintoolsbar.cpp \
-    mainwindow.cpp \
-    networkmodule.cpp \
-    pagegreet.cpp \
-    pageicon.cpp \
-    pagemodule.cpp \
-    pageothers.cpp \
-    pagetheme.cpp \
-    sqlmodule.cpp \
-    tabmodule.cpp \
-    testmainwindow.cpp \
-    utiladb.cpp \
-    windowicon.cpp
+    tabmodule.cpp
 
 HEADERS += \
-        mainwindow.h \
-    tabmodule.h \
-    sqlmodule.h \
-    networkmodule.h \
-    pagemodule.h \
-    mainstatusbar.h \
-    maintoolsbar.h \
-    pagegreet.h \
-    pageicon.h \
-    pagetheme.h \
-    pageothers.h \
-    mainmenubar.h \
-    utiladb.h \
-    config.h \
-    testmainwindow.h \
-    baseiconwidget.h \
-    baseiconwidget.h \
-    config.h \
+    base/baseiconwidget.h \
+    configs/config.h \
+    data/sqlmodule.h \
+    icon/windowicon.h \
+    network/networkmodule.h \
+    pages/pagegreet.h \
+    pages/pageicon.h \
+    pages/pageothers.h \
+    pages/pagetheme.h \
+    test/testmainwindow.h \
+    utils/utiladb.h \
     mainmenubar.h \
     mainstatusbar.h \
     maintoolsbar.h \
     mainwindow.h \
-    networkmodule.h \
-    pagegreet.h \
-    pageicon.h \
     pagemodule.h \
-    pageothers.h \
-    pagetheme.h \
-    sqlmodule.h \
-    tabmodule.h \
-    testmainwindow.h \
-    utiladb.h \
-    baseiconwidget.h \
-    config.h \
-    mainmenubar.h \
-    mainstatusbar.h \
-    maintoolsbar.h \
-    mainwindow.h \
-    networkmodule.h \
-    pagegreet.h \
-    pageicon.h \
-    pagemodule.h \
-    pageothers.h \
-    pagetheme.h \
-    sqlmodule.h \
-    tabmodule.h \
-    testmainwindow.h \
-    utiladb.h \
-    windowicon.h
+    tabmodule.h
 
 FORMS += \
     testmainwindow.ui

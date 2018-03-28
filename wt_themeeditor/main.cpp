@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "qlogging.h"
-#include "config.h"
+#include "configs/config.h"
 
 #include <QApplication>
 #include <QFile>

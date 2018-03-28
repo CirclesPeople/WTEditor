@@ -6,8 +6,8 @@
 #include <QGridLayout>
 #include <QVBoxLayout>
 #include <QScrollArea>
-#include "baseiconwidget.h"
-#include "windowicon.h"
+#include "base/baseiconwidget.h"
+#include "icon/windowicon.h"
 
 class PageIcon:public QWidget
 {
