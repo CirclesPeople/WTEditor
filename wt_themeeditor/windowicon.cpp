@@ -1,37 +1,5 @@
 #include "windowicon.h"
 
-bool BaseIconWidget::eventFilter(QObject *watched, QEvent *event)
-{
-    if (watched == newIcon) {
-            if (event->type() == QEvent::DragEnter) {
-                //当拖放时鼠标进入label时, label接受拖放的动作
-                QDragEnterEvent *dee = dynamic_cast<QDragEnterEvent *>(event);
-                dee->acceptProposedAction();
-                return true;
-            } else if (event->type() == QEvent::Drop) {
-                // [[3]]: 当放操作发生后, 取得拖放的数据
-                QDropEvent *de = dynamic_cast<QDropEvent *>(event);
-                QList<QUrl> urls = de->mimeData()->urls();
-
-                if (urls.isEmpty()) { return true; }
-                QString path = urls.first().toLocalFile();
-
-                // [[4]]: 在label上显示拖放的图片
-                QImage image(path); // QImage对I/O优化过, QPixmap对显示优化
-                if (!image.isNull()) {
-                    image = image.scaled(ui->label->size(),
-                                         Qt::KeepAspectRatio,
-                                         Qt::SmoothTransformation);
-                    nweIcon->setPixmap(QPixmap::fromImage(image));
-                }
-
-                return true;
-            }
-        }
-
-        return BaseIconWidget::eventFilter(watched, event);
-}
-
 void WindowIcon::showIconWindow(){
     show();
 }
@@ -91,7 +59,7 @@ void WindowIcon::init(){
     mGridLayout->addWidget(arrowM,1,2,Qt::AlignCenter);
     mGridLayout->addWidget(arrowH,2,2,Qt::AlignCenter);
 
-    mGridLayout->addWidget(nweIcon,0,3,Qt::AlignCenter);
+    mGridLayout->addWidget(newIcon,0,3,Qt::AlignCenter);
     mGridLayout->addWidget(newIconM,1,3,Qt::AlignCenter);
     mGridLayout->addWidget(newIconH,2,3,Qt::AlignCenter);
 

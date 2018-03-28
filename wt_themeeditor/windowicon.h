@@ -30,8 +30,6 @@ private:
     QLabel *labelH;
 
     void init();
-protected:
-    bool eventFilter(QObject *watched, QEvent *event);
 };
 
 #endif // WINDOWICON_H
