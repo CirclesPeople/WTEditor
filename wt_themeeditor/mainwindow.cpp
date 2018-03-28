@@ -2,8 +2,13 @@
 
 #include <QDebug>
 
+void MainWindow::sendSignal(){
+    emit adbDeviceSig();
+}
+
 void MainWindow::init(){
     qDebug("MainWindow::init()");
+    utilADB = new UtilADB();
 
     setFixedSize(800,600);
     QPalette mPalette = this->palette();
@@ -34,7 +39,7 @@ void MainWindow::init(){
     setCentralWidget(mWindowWidget);
 
     /* add menu bar */
-    mainMenuBar =new MainMenuBar();
+    mainMenuBar =new MainMenuBar(utilADB);
     setMenuBar(mainMenuBar);
 
     /* adb tools bar */
@@ -45,28 +50,29 @@ void MainWindow::init(){
     mainStatusBar = new MainStatusBar();
     setStatusBar(mainStatusBar);
 
-    /* get UtilADB's pointer */
-    utilADB = new UtilADB();
-    utilADB->adbDevice();
-
-
 }
 
 /* initialise connections. */
 void MainWindow::initConnects(){
+    connect(this, &MainWindow::adbDeviceSig,utilADB, &UtilADB::adbDevice);
     connect(utilADB,&UtilADB::adbProcInfo,this,&MainWindow::onADBProcInfo);
 }
 
 void MainWindow::onADBProcInfo(const QStringList outputList){
+    QString deviceStr;
+    int deviceCount = 0;
     foreach(QString tmp,outputList){
-        qDebug() << tmp;
+        if(tmp.endsWith("device",Qt::CaseSensitive)){
+            deviceStr = tmp;
+            deviceCount++;
+        }
     }
-    if(outputList.size()==4){
-        mainStatusBar->statusLabel->setText(outputList.value(1));
-    }else if(outputList.size()<4){
-        mainStatusBar->statusLabel->setText("no device is connected");
-    }else if(outputList.size()>4){
+    if(deviceCount > 1){
         mainStatusBar->statusLabel->setText("too more connections");
+    }else if(deviceCount < 1){
+        mainStatusBar->statusLabel->setText("no device is connected");
+    }else if(deviceCount == 1){
+        mainStatusBar->statusLabel->setText(deviceStr);
     }else{
         mainStatusBar->statusLabel->setText("unknow connection");
     }

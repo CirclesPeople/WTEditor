@@ -1,4 +1,5 @@
 #include "utiladb.h"
+#include "mainwindow.h"
 
 #include <QDebug>
 
@@ -27,15 +28,20 @@ void UtilADB::init(){
     if(adbProcess != NULL){
         adbProcess = new QProcess();
     }
+    adbDevice();
 }
 
+void UtilADB::initConnects(){
+
+}
+
+//读取adb进程信息
 void UtilADB::readFromProcess(const int flag)
 {
     QString output = QString::fromUtf8(adbProcess->readAll()).trimmed();
     qDebug() << output;
     outputList = output.split("\r\n");
     qDebug() << "readFromProcess()" << "flag is " << flag << "; outputList's size is " << outputList.size();
-
 
     switch (flag) {
     case ADB_DEVICES_FLAG:
@@ -82,6 +88,7 @@ void UtilADB::readFromProcess(const int flag)
         break;
     }
 }
+
 /* execute adb command "adb devices" */
 void UtilADB::adbDevice(){
 
@@ -110,21 +117,21 @@ void UtilADB::adbPush(QString *pathFrom,QString *pathTo){
         //readFromProcess(ADB_DEVICES_FLAG);
     });*/
 }
-void UtilADB::adbPull(){
 
-}
+void UtilADB::adbPull(){}
 
-void UtilADB::adbInstall(){
+void UtilADB::adbInstall(){}
 
-}
-void UtilADB::adbShell(){
+void UtilADB::adbShell(){}
 
-}
+void UtilADB::adbKill(){}
 
 void UtilADB::enterRecoveryMode(){}
 
 void UtilADB::enterFastbootMode(){}
+
 void UtilADB::enterFactoryMode(){}
+
 void UtilADB::screenShot(){}
 
 bool isAdbConnect();

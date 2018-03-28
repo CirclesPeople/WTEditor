@@ -61,11 +61,11 @@ int main(int argc, char *argv[])
     qss.open(QFile::ReadOnly);
     QString str = QLatin1String(qss.readAll());
 
-    qDebug("nitialise settings.");
+    qDebug("main()::initialise settings.");
     Config config;
     config.mSettings->setValue("test","test");
 
-    qDebug("show MainWindow.");
+    qDebug("main()::show MainWindow.");
     QApplication a(argc, argv);
 
     a.setStyleSheet(str);

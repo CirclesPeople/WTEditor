@@ -3,14 +3,17 @@
 
 #include <QMenuBar>
 
+#include <utils/utiladb.h>
+
 class MainMenuBar:public QMenuBar
 {
     Q_OBJECT
 public:
-    MainMenuBar(QWidget *parent = nullptr);
+    MainMenuBar(const UtilADB *utilADB);
 
 private:
     void init();
+    const UtilADB *mUtilADB;
 };
 
 #endif // MAINMENUBAR_H

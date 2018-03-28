@@ -43,6 +43,9 @@ void MainMenuBar::init()
     toolsMenu->addAction("Log Grab");
     toolsMenu->addSeparator();
     toolsMenu->addAction("ScreenShot");
+    toolsMenu->addSeparator();
+    QAction *actADBState = toolsMenu->addAction("ADB State");
+    connect(actADBState, &QAction::triggered, mUtilADB, &UtilADB::adbDevice);
 
     QMenu *settingsMenu=addMenu("Settings");
     settingsMenu->addAction("Preference");
@@ -52,7 +55,8 @@ void MainMenuBar::init()
 
 }
 
-MainMenuBar::MainMenuBar(QWidget *parent):QMenuBar(parent)
+MainMenuBar::MainMenuBar(const UtilADB *utilADB):QMenuBar()
 {
+    mUtilADB=utilADB;
     init();
 }

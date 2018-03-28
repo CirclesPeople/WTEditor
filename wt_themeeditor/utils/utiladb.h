@@ -13,7 +13,11 @@ public:
     QStringList outputList;
 
     void init();
+    void initConnects();
+
+public slots:
     void adbDevice();
+    void adbKill();
     void adbPush(QString *pathFrom,QString *pathTo);
     void adbPull();
     void adbInstall();
