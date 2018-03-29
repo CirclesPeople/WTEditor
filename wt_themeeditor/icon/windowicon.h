@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QGridLayout>
 #include <QLabel>
+#include <QEvent>
 
 #include "base/baseiconwidget.h"
 
@@ -12,6 +13,10 @@ class WindowIcon:public QWidget
 public:
     WindowIcon(QWidget *parent = 0);
     void showIconWindow();
+
+    QString pathLittle;
+    QString pathMiddle;
+    QString pathHigh;
 
 private:
     QGridLayout *mGridLayout;
@@ -30,6 +35,9 @@ private:
     QLabel *labelH;
 
     void init();
+
+protected:
+    bool eventFilter(QObject *watched, QEvent *event);
 };
 
 #endif // WINDOWICON_H

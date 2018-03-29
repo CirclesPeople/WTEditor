@@ -13,17 +13,17 @@ void PageIcon::init(){
     mGridLayout = new QGridLayout();
     mScrollArea = new QScrollArea();
 
-    mPhoneIcon = new BaseIconWidget(QObject::tr("Phone"));
+    mPhoneIcon = new BaseIconWidget(QObject::tr("Phone"),FLAG_HIDE);
     connect(mPhoneIcon,&BaseIconWidget::onClicked,mWindowIcon,&WindowIcon::showIconWindow);
 
-    mContactsIcon = new BaseIconWidget(QObject::tr("Contacts"));
-    mMessagingIcon = new BaseIconWidget(QObject::tr("Messaging"));
-    mBrowserIcon = new BaseIconWidget(QObject::tr("Browser"));
-    mSettingsIcon = new BaseIconWidget(QObject::tr("Settings"));
-    mCameraIcon = new BaseIconWidget(QObject::tr("Cmamera"));
-    mGalleryIcon = new BaseIconWidget(QObject::tr("Gallery"));
-    mMusicIcon = new BaseIconWidget(QObject::tr("Music"));
-    mCalendarIcon = new BaseIconWidget(QObject::tr("Calendar"));
+    mContactsIcon = new BaseIconWidget(QObject::tr("Contacts"), FLAG_HIDE);
+    mMessagingIcon = new BaseIconWidget(QObject::tr("Messaging"), FLAG_HIDE);
+    mBrowserIcon = new BaseIconWidget(QObject::tr("Browser"), FLAG_HIDE);
+    mSettingsIcon = new BaseIconWidget(QObject::tr("Settings"), FLAG_HIDE);
+    mCameraIcon = new BaseIconWidget(QObject::tr("Cmamera"), FLAG_HIDE);
+    mGalleryIcon = new BaseIconWidget(QObject::tr("Gallery"), FLAG_HIDE);
+    mMusicIcon = new BaseIconWidget(QObject::tr("Music"), FLAG_HIDE);
+    mCalendarIcon = new BaseIconWidget(QObject::tr("Calendar"), FLAG_HIDE);
 
     mGridLayout->addWidget(mPhoneIcon,0,0,Qt::AlignCenter);
     mGridLayout->addWidget(mContactsIcon,0,1,Qt::AlignCenter);

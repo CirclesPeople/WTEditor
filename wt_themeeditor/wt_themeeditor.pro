@@ -72,3 +72,5 @@ RESOURCES += \
 
 DISTFILES += \
     qsrc/main.rc
+
+ CONFIG += c++11
