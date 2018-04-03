@@ -12,7 +12,6 @@ public:
 
     QStringList outputList;
 
-    void init();
     void initConnects();
 
 public slots:

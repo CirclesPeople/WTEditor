@@ -44,6 +44,7 @@ void MainMenuBar::init()
     toolsMenu->addSeparator();
     toolsMenu->addAction("ScreenShot");
     toolsMenu->addSeparator();
+
     QAction *actADBState = toolsMenu->addAction("ADB State");
     connect(actADBState, &QAction::triggered, mUtilADB, &UtilADB::adbDevice);
 

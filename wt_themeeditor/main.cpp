@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "qlogging.h"
-#include "configs/config.h"
+
+#include "utils/UtilStyle.cpp"
+#include "configs/Config.cpp"
 
 #include <QApplication>
 #include <QFile>
@@ -9,6 +11,7 @@
 #include <QString>
 #include <QTextStream>
 #include <QDateTime>
+#include <QDebug>
 
 void outputMessage(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
@@ -51,25 +54,24 @@ void outputMessage(QtMsgType type, const QMessageLogContext &context, const QStr
 
 int main(int argc, char *argv[])
 {
-
-    //注册MessageHandler,輸出log到log.txt
-    qInstallMessageHandler(outputMessage);
-    qDebug("****** main ******");
-
-    // 加载QSS样式
-    QFile qss(":/qsrc/qss/psblack.css");
-    qss.open(QFile::ReadOnly);
-    QString str = QLatin1String(qss.readAll());
-
-    qDebug("main()::initialise settings.");
-    Config config;
-    config.mSettings->setValue("test","test");
-
-    qDebug("main()::show MainWindow.");
     QApplication a(argc, argv);
 
-    a.setStyleSheet(str);
-    qss.close();
+    //注册MessageHandler,输出log到log.txt
+    qInstallMessageHandler(outputMessage);
+    qDebug("\n\n****** main ******\n\n");
+
+    // 初始化QSettings
+    Config::initSettings();
+
+    QSettings settings(CONFIG_PATH,QSettings::IniFormat);
+    QString author = settings.value("/devinfo/author").toString();
+    QString org = settings.value("/devinfo/organization").toString();
+    QString orgDomain = settings.value("/devinfo/org_domain").toString();
+    QString appName = settings.value("/devinfo/app_name").toString();
+    qDebug()<< "\n***devinfo***\n" << author << "\n" << org << "\n" << orgDomain << "\n" << appName << "\n" ;
+
+    // 加载QSS样式
+    UtilStyle::setStyle(":/qsrc/qss/psblack.css");
 
     MainWindow w;
     w.setWindowIcon(QIcon(":/qsrc/main.ico"));

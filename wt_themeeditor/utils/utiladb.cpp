@@ -23,13 +23,9 @@
 #define ADB_REBOOT_FASTBOOT_FLAG 9
 #define ADB_REBOOT_RESET "adb reboot reset"
 #define ADB_REBOOT_RESET_FLAG 10
+#define ADB_KILL "adb kill-server"
+#define ADB_KILL_FLAG 11
 
-void UtilADB::init(){
-    if(adbProcess != NULL){
-        adbProcess = new QProcess();
-    }
-    adbDevice();
-}
 
 void UtilADB::initConnects(){
 
@@ -91,14 +87,15 @@ void UtilADB::readFromProcess(const int flag)
 
 /* execute adb command "adb devices" */
 void UtilADB::adbDevice(){
-
+    if(adbProcess != NULL){
+        adbProcess = new QProcess();
+    }
     adbProcess->setProcessChannelMode(QProcess::MergedChannels);
     adbProcess->start(ADB_DEVICES);
 
     connect(adbProcess, &QProcess::readyRead, [=](){
         readFromProcess(ADB_DEVICES_FLAG);
     });
-
 }
 
 void UtilADB::getADBProcessInfo(){
@@ -118,13 +115,22 @@ void UtilADB::adbPush(QString *pathFrom,QString *pathTo){
     });*/
 }
 
-void UtilADB::adbPull(){}
+void UtilADB::adbPull(){
+}
 
 void UtilADB::adbInstall(){}
 
 void UtilADB::adbShell(){}
 
-void UtilADB::adbKill(){}
+void UtilADB::adbKill(){
+    adbProcess->setProcessChannelMode(QProcess::MergedChannels);
+    adbProcess->start(ADB_KILL);
+
+    connect(adbProcess, &QProcess::readyRead, [=](){
+        readFromProcess(ADB_KILL_FLAG);
+    });
+
+}
 
 void UtilADB::enterRecoveryMode(){}
 
@@ -140,5 +146,4 @@ bool isAdbConnect();
 
 UtilADB::UtilADB()
 {
-    init();
 }

@@ -29,14 +29,10 @@ public:
 
     UtilADB *utilADB;
 
-signals:
-    void adbDeviceSig();
-
 private:
     void init();
     void initConnects();
     void onADBProcInfo(const QStringList outputList);
-    void sendSignal();
 
     QWidget *mWindowWidget;
     QHBoxLayout *mLayout;

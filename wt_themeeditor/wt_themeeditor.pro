@@ -27,7 +27,6 @@ SOURCES += \
     base/baseiconwidget.cpp \
     configs/config.cpp \
     data/sqlmodule.cpp \
-    icon/windowicon.cpp \
     network/networkmodule.cpp \
     pages/pagegreet.cpp \
     pages/pageicon.cpp \
@@ -41,13 +40,14 @@ SOURCES += \
     maintoolsbar.cpp \
     mainwindow.cpp \
     pagemodule.cpp \
-    tabmodule.cpp
+    tabmodule.cpp \
+    window/windowicon.cpp \
+    window/windowsettings.cpp \
+    utils/utilstyle.cpp
 
 HEADERS += \
     base/baseiconwidget.h \
-    configs/config.h \
     data/sqlmodule.h \
-    icon/windowicon.h \
     network/networkmodule.h \
     pages/pagegreet.h \
     pages/pageicon.h \
@@ -60,7 +60,9 @@ HEADERS += \
     maintoolsbar.h \
     mainwindow.h \
     pagemodule.h \
-    tabmodule.h
+    tabmodule.h \
+    window/windowicon.h \
+    window/windowsettings.h
 
 FORMS += \
     testmainwindow.ui

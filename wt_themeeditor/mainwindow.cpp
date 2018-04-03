@@ -2,51 +2,48 @@
 
 #include <QDebug>
 
-void MainWindow::sendSignal(){
-    emit adbDeviceSig();
-}
-
 void MainWindow::init(){
-    qDebug("MainWindow::init()");
+    //初始化UtilADB对象
     utilADB = new UtilADB();
 
+    //设置mainwindow样式
     setFixedSize(800,600);
     QPalette mPalette = this->palette();
     mPalette.setBrush(QPalette::Background, Qt::white);
     setPalette(mPalette);
 
-    /* create centralwidget */
+    //创建mainwindow QWidget
     mWindowWidget = new QWidget(this);
 
-    /* create horizontal layout */
+    //创建mainwindow 水平布局
     mLayout = new QHBoxLayout();
 
-    //mLayout->addStretch();  /* add stretch */
-
-    /* add pags module */
+    //将PageModule添加到一个pagelayout水平布局中
     pageStackedWidget = new PageModule();
     pageStackedWidget->autoFillBackground();
     pageLayout = new QHBoxLayout();
     pageLayout->addWidget(pageStackedWidget);
 
-    /* add tab module */
+    //创建TabModule，并将PageModule传递给TabModule
     tabLayout = new TabModule(pageStackedWidget);
 
-    /* add layout */
+    //将TabModule、PageModule同时添加到mainwindow的水平布局当中
     mLayout->addLayout(tabLayout);
     mLayout->addLayout(pageLayout);
+
     mWindowWidget->setLayout(mLayout);
+    //设置MainWindow的widget
     setCentralWidget(mWindowWidget);
 
-    /* add menu bar */
+    //添加菜单栏
     mainMenuBar =new MainMenuBar(utilADB);
     setMenuBar(mainMenuBar);
 
-    /* adb tools bar */
+    //添加工具栏
     mainToolsBar = new MainToolsBar();
     addToolBar(mainToolsBar);
 
-    /* add status bar */
+    //添加状态栏
     mainStatusBar = new MainStatusBar();
     setStatusBar(mainStatusBar);
 
@@ -54,7 +51,6 @@ void MainWindow::init(){
 
 /* initialise connections. */
 void MainWindow::initConnects(){
-    connect(this, &MainWindow::adbDeviceSig,utilADB, &UtilADB::adbDevice);
     connect(utilADB,&UtilADB::adbProcInfo,this,&MainWindow::onADBProcInfo);
 }
 

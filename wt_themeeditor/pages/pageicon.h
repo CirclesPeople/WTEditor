@@ -7,7 +7,7 @@
 #include <QVBoxLayout>
 #include <QScrollArea>
 #include "base/baseiconwidget.h"
-#include "icon/windowicon.h"
+#include "window/windowicon.h"
 
 class PageIcon:public QWidget
 {
