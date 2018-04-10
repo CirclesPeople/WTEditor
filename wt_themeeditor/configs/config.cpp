@@ -8,14 +8,18 @@ class Config{
 public:
     static void initSettings(){
         QSettings settings(CONFIG_PATH,QSettings::IniFormat);
-        if(!settings.contains("/devinfo/author"))
+        if(!settings.contains("/devinfo/author")){
             settings.setValue("/devinfo/author", "Bill Huang");
-        if(!settings.contains("/devinfo/organization"))
+        }
+        if(!settings.contains("/devinfo/organization")){
             settings.setValue("/devinfo/organization", "Wingtech");
-        if(!settings.contains("/devinfo/org_domain"))
+        }
+        if(!settings.contains("/devinfo/org_domain")){
             settings.setValue("/devinfo/org_domain", "com.wingtech");
-        if(!settings.contains("/devinfo/app_name"))
+        }
+        if(!settings.contains("/devinfo/app_name")){
             settings.setValue("/devinfo/app_name", "WT ThemeEditor");
+        }
     }
 
 };

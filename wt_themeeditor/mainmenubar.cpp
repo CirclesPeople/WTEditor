@@ -10,13 +10,7 @@ void MainMenuBar::init()
     fileMenu->addSeparator();
     fileMenu->addAction("New");
     fileMenu->addSeparator();
-    fileMenu->addAction("Last");
-    fileMenu->addSeparator();
-    fileMenu->addAction("Reload");
-    fileMenu->addSeparator();
     fileMenu->addAction("Export");
-    fileMenu->addSeparator();
-    fileMenu->addAction("Tutorial");
     fileMenu->addSeparator();
     fileMenu->addAction("Apply");
     fileMenu->addSeparator();
@@ -26,38 +20,23 @@ void MainMenuBar::init()
     QMenu *toolsMenu=addMenu("Tools");
     toolsMenu->addAction("Mobile Assistant");
     toolsMenu->addSeparator();
-    toolsMenu->addAction("Reset");
+    toolsMenu->addAction("ADB Check");
     toolsMenu->addSeparator();
-    toolsMenu->addAction("OTA Update");
-    toolsMenu->addSeparator();
-    toolsMenu->addAction("Recovery Mode");
-    toolsMenu->addSeparator();
-    toolsMenu->addAction("Fastboot Mode");
-    toolsMenu->addSeparator();
-    toolsMenu->addAction("Factory Mode");
-    toolsMenu->addSeparator();
-    toolsMenu->addAction("Apps Install");
-    toolsMenu->addSeparator();
-    toolsMenu->addAction("Apps Uninstall");
-    toolsMenu->addSeparator();
-    toolsMenu->addAction("Log Grab");
-    toolsMenu->addSeparator();
-    toolsMenu->addAction("ScreenShot");
-    toolsMenu->addSeparator();
-
     QAction *actADBState = toolsMenu->addAction("ADB State");
     connect(actADBState, &QAction::triggered, mUtilADB, &UtilADB::adbDevice);
 
-    QMenu *settingsMenu=addMenu("Settings");
-    settingsMenu->addAction("Preference");
-
     QMenu *helpMenu=addMenu("Help");
     helpMenu->addAction("About");
-
+    helpMenu->addSeparator();
+    helpMenu->addAction("Tutorial");
+    helpMenu->addSeparator();
+    QAction *actPreference = helpMenu->addAction("Preference");
+    connect(actPreference, &QAction::triggered,mWinSettings, &WindowSettings::showSettingsWindow);
 }
 
-MainMenuBar::MainMenuBar(const UtilADB *utilADB):QMenuBar()
+MainMenuBar::MainMenuBar(const UtilADB *utilADB, const WindowSettings *winSettings):QMenuBar()
 {
     mUtilADB=utilADB;
+    mWinSettings=winSettings;
     init();
 }

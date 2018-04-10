@@ -1,10 +1,8 @@
 #include "windowsettings.h"
-#include "configs/Config.cpp"
 
 #include <QSettings>
 
 void WindowSettings::init(){
-    QSettings settings(CONFIG_PATH,QSettings::IniFormat);
 
     mLayoutSettings=new QVBoxLayout();
 
@@ -21,27 +19,40 @@ void WindowSettings::init(){
     srcCurLab = new QLabel();
 
     srcDefaultEdit = new QLineEdit();
-    connect(srcDefaultEdit,&QLineEdit::editingFinished,[=](){
-        settings.setValue("/settings/defaultdir","defaultdir");
-    });
     srcOutputEdit = new QLineEdit();
-    connect(srcOutputEdit,&QLineEdit::editingFinished,[=](){
-        settings.setValue("/settings/outputdir","outputdir");
-    });
     srcCurEdit = new QLineEdit();
-    connect(srcCurEdit,&QLineEdit::editingFinished,[=](){
-        settings.setValue("/settings/curdir","curdir");
-    });
+
+    srcDefaultBtn = new QPushButton();
+    srcOutputBtn = new QPushButton();
+    srcCurBtn = new QPushButton();
 
     srcDefaultLayout->addWidget(srcDefaultLab);
     srcDefaultLayout->addWidget(srcDefaultEdit);
+    srcDefaultLayout->addWidget(srcDefaultBtn);
     srcDirDefault->setLayout(srcDefaultLayout);
 
     srcOutputLayout->addWidget(srcOutputLab);
     srcOutputLayout->addWidget(srcOutputEdit);
+    srcOutputLayout->addWidget(srcOutputBtn);
     srcDirOutput->setLayout(srcOutputLayout);
 
     srcCurLayout->addWidget(srcCurLab);
     srcCurLayout->addWidget(srcCurEdit);
+    srcCurLayout->addWidget(srcCurBtn);
     srcDirCur->setLayout(srcCurLayout);
+
+    mLayoutSettings->addWidget(srcDirDefault);
+    mLayoutSettings->addWidget(srcDirDefault);
+    mLayoutSettings->addWidget(srcDirDefault);
+
+    setLayout(mLayoutSettings);
 }
+/* 显示窗口 */
+void WindowSettings::showSettingsWindow(){
+    show();
+}
+WindowSettings::WindowSettings(QWidget *parent):QWidget(parent)
+{
+    init();
+}
+

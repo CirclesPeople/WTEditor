@@ -11,7 +11,8 @@
 #include <maintoolsbar.h>
 #include <mainstatusbar.h>
 #include <mainmenubar.h>
-#include <utils/utiladb.h>
+#include "utils/utiladb.h"
+#include "window/windowsettings.h"
 
 class MainWindow : public QMainWindow
 {
@@ -28,6 +29,7 @@ public:
     MainMenuBar *mainMenuBar;
 
     UtilADB *utilADB;
+    WindowSettings *winSettings;
 
 private:
     void init();

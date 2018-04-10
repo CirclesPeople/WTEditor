@@ -6,6 +6,9 @@ void MainWindow::init(){
     //初始化UtilADB对象
     utilADB = new UtilADB();
 
+    //初始化设置窗口
+    winSettings = new WindowSettings();
+
     //设置mainwindow样式
     setFixedSize(800,600);
     QPalette mPalette = this->palette();
@@ -36,7 +39,7 @@ void MainWindow::init(){
     setCentralWidget(mWindowWidget);
 
     //添加菜单栏
-    mainMenuBar =new MainMenuBar(utilADB);
+    mainMenuBar =new MainMenuBar(utilADB,winSettings);
     setMenuBar(mainMenuBar);
 
     //添加工具栏

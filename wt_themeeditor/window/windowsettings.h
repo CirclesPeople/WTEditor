@@ -5,7 +5,9 @@
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QLineEdit>
+#include <QPushButton>
 #include <QHBoxLayout>
+#include <QWindow>
 
 class WindowSettings:public QWidget{
     Q_OBJECT
@@ -13,6 +15,7 @@ public:
     WindowSettings(QWidget *parent = 0);
 
     void init();
+    void showSettingsWindow();
 
     QVBoxLayout *mLayoutSettings;
 
@@ -32,7 +35,9 @@ public:
     QLineEdit *srcOutputEdit;
     QLineEdit *srcCurEdit;
 
+    QPushButton *srcDefaultBtn;
+    QPushButton *srcOutputBtn;
+    QPushButton *srcCurBtn;
 
-
-}
+};
 #endif // WINDOWSETTINGS_H

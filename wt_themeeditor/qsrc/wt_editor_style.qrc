@@ -11,5 +11,6 @@
         <file>image/theme.ico</file>
         <file>image/no-img.png</file>
         <file>image/logo.png</file>
+        <file>image/open.ico</file>
     </qresource>
 </RCC>
