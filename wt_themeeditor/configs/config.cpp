@@ -18,6 +18,7 @@ class Config{
 public:
     static void initSettings(){
         QSettings settings(CONFIG_PATH,QSettings::IniFormat);
+        QString homePath(qApp->applicationDirPath());
         if(!settings.contains("/devinfo/author")){
             settings.setValue("/devinfo/author", INFO_AUTHOR);
         }
@@ -31,13 +32,13 @@ public:
             settings.setValue("/devinfo/app_name", INFO_APP_NAME);
         }
         if(!settings.contains("/dir/default")){
-            settings.setValue("/dir/default", DEFAULT_PATH);
+            settings.setValue("/dir/default", homePath.append(DEFAULT_PATH));
         }
         if(!settings.contains("/dir/output")){
-            settings.setValue("/dir/output", OUTPUT_PATH);
+            settings.setValue("/dir/output", homePath.append(OUTPUT_PATH));
         }
         if(!settings.contains("/dir/current")){
-            settings.setValue("/dir/current", CURRENT_PATH);
+            settings.setValue("/dir/current", homePath.append(CURRENT_PATH));
         }
     }
 
