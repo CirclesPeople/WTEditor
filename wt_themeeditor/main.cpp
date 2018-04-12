@@ -12,6 +12,8 @@
 #include <QTextStream>
 #include <QDateTime>
 #include <QDebug>
+#include <QSplashScreen>
+#include <QPixmap>
 
 void outputMessage(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
@@ -75,6 +77,24 @@ int main(int argc, char *argv[])
 
     MainWindow w;
     w.setWindowIcon(QIcon(":/qsrc/main.ico"));
+
+    //显示应用程序启动画面
+    QPixmap pixmap(":/qsrc/starting.png");
+    QSplashScreen mSplash(pixmap);
+    mSplash.showMessage("starting......");
+    mSplash.show();
+    a.processEvents();//这样可以保证程序一直可以响应鼠标键盘上事件
+
+    QDateTime n=QDateTime::currentDateTime();
+    QDateTime now;
+    //延时3s
+    do{
+        now=QDateTime::currentDateTime();
+    } while (n.secsTo(now)<=3);//3为需要延时的秒数
+
+    mSplash.finish(&w);//启动画面在窗口w创建完成以后结束
+
+
     w.show();
 
     return a.exec();

@@ -115,11 +115,32 @@ void UtilADB::enterFastbootMode(){}
 
 void UtilADB::enterFactoryMode(){}
 
-void UtilADB::screenShot(){}
+/* adb shell screencap -p /sdcard/tmp.png*/
+void UtilADB::screencap(){
+    if(adbProcess != NULL){
+        adbProcess = new QProcess();
+    }
+    adbProcess->setProcessChannelMode(QProcess::MergedChannels);
+    adbProcess->start(ADB_SCREENCAP);
 
-bool isAdbConnect();
+    connect(adbProcess, &QProcess::readyRead, [=](){
+        readFromProcess(ADB_SCREENCAP_FLAG);
+    });
 
+}
 
+void UtilADB::mkdir(const int flag){
+    if(adbProcess != NULL){
+        adbProcess = new QProcess();
+    }
+    adbProcess->setProcessChannelMode(QProcess::MergedChannels);
+    adbProcess->start(ADB_MKDIR);
+
+    connect(adbProcess, &QProcess::readyRead, [=](){
+        readFromProcess(ADB_SCREENCAP_FLAG);
+    });
+
+}
 
 UtilADB::UtilADB()
 {

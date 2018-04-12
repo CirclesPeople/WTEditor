@@ -26,15 +26,27 @@
 #define ADB_REBOOT_RESET_FLAG 10
 #define ADB_KILL "adb kill-server"
 #define ADB_KILL_FLAG 11
-#define ADB_SCREENCAP "adb shell screencap -p /sdcard/tmp.png"
+#define ADB_SCREENCAP "adb shell screencap -p "
 #define ADB_SCREENCAP_FLAG 12
 #define ADB_BROADCAST "adb shell am broadcast -a com.theme.ACTION_REPLACE_THEME "
 #define ADB_BROADCAST_FLAG 13
-#define THEME_ADDR "--es theme_addr \"\/sdcard\/wt_themes\""
-#define ICON_ADDR "--es theme_addr \"\/sdcard\/wt_themes\/icons\""
-#define WALLPAPER_ADDR "--es theme_addr \"\/sdcard\/wt_themes\/wallpapers\""
-#define FONT_ADDR "--es theme_addr \"\/sdcard\/wt_themes\/fonts\""
+#define ADB_MKDIR "adb shell mkdir "
+#define ADB_MKDIR_FLAG 14
 
+#define STRINGS_T "--es "
+#define INTEGER_T "--ei "
+#define BOOLEAN_T "--ez "
+
+#define THEME_KEY_ADDR "theme_addr "
+#define THEM_VALUE_ADDR "\"\/sdcard\/wt_themes\""
+#define ICON_KEY_ADDR "icon_addr "
+#define ICON_VALUE_ADDR "\"\/sdcard\/wt_themes\/icons\""
+#define WALLPAPER_KEY_ADDR "wallpaper_addr "
+#define WALLPAPER_VALUE_ADDR "\"\/sdcard\/wt_themes\/wallpapers\""
+#define FONT_KEY_ADDR "font_addr "
+#define FONT_VALUE_ADDR "\"\/sdcard\/wt_themes\/fonts\""
+
+#define SCREENCAP_ADDR "\/sdcard\/tmp.png"
 
 class UtilADB:public QObject
 {
@@ -57,7 +69,8 @@ public slots:
     void enterRecoveryMode();
     void enterFastbootMode();
     void enterFactoryMode();
-    void screenShot();
+    void screencap();
+    void mkdir(const int flag);
 
 signals:
     void adbProcInfo(const QStringList outputList);

@@ -12,5 +12,6 @@
         <file>image/no-img.png</file>
         <file>image/logo.png</file>
         <file>image/open.ico</file>
+        <file>starting.png</file>
     </qresource>
 </RCC>
