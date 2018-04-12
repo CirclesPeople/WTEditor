@@ -5,6 +5,7 @@
 #include<QHBoxLayout>
 #include<QVBoxLayout>
 #include<QWidget>
+#include<QThread>
 
 #include <tabmodule.h>
 #include <pagemodule.h>
@@ -22,6 +23,7 @@ public:
     MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+    QThread workerThread;
     TabModule *tabLayout;
     PageModule *pageStackedWidget;
     MainToolsBar *mainToolsBar;
@@ -39,6 +41,11 @@ private:
     QWidget *mWindowWidget;
     QHBoxLayout *mLayout;
     QHBoxLayout *pageLayout;
+
+public slots:
+    void handleResults(const QString &);
+signals:
+    void operate(const QString &);
 };
 
 #endif // MAINWINDOW_H

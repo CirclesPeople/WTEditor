@@ -5,6 +5,12 @@
 void MainWindow::init(){
     //初始化UtilADB对象
     utilADB = new UtilADB();
+    //开启新线程显示设备画面（截屏）
+    utilADB->moveToThread(&workerThread);
+    connect(&workerThread, &QThread::finished, utilADB, &QObject::deleteLater);
+    connect(this, &Controller::operate, utilADB, &UtilADB::doWork);
+    connect(utilADB, &UtilADB::resultReady, this, &Controller::handleResults);
+    workerThread.start();
 
     //初始化设置窗口
     winSettings = new WindowSettings();
@@ -86,5 +92,6 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
-
+    workerThread.quit();
+    workerThread.wait();
 }

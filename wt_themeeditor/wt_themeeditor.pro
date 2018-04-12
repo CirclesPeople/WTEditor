@@ -43,7 +43,8 @@ SOURCES += \
     tabmodule.cpp \
     window/windowicon.cpp \
     window/windowsettings.cpp \
-    utils/utilstyle.cpp
+    utils/utilstyle.cpp \
+    window/windowemulator.cpp
 
 HEADERS += \
     base/baseiconwidget.h \
@@ -62,7 +63,8 @@ HEADERS += \
     pagemodule.h \
     tabmodule.h \
     window/windowicon.h \
-    window/windowsettings.h
+    window/windowsettings.h \
+    window/windowemulator.h
 
 FORMS += \
     testmainwindow.ui

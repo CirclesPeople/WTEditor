@@ -35,7 +35,7 @@ void PageIcon::init(){
     mGridLayout->addWidget(mGalleryIcon,1,2,Qt::AlignCenter);
     mGridLayout->addWidget(mMusicIcon,1,3,Qt::AlignCenter);
 
-     mGridLayout->addWidget(mCalendarIcon,2,3,Qt::AlignCenter);
+    mGridLayout->addWidget(mCalendarIcon,2,3,Qt::AlignCenter);
 
     mScrollArea->setLayout(mGridLayout);
     mVBLayout->addWidget(mScrollArea);

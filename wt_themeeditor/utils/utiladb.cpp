@@ -120,8 +120,9 @@ void UtilADB::screencap(){
     if(adbProcess != NULL){
         adbProcess = new QProcess();
     }
+    QString cmd(ADB_SCREENCAP);
     adbProcess->setProcessChannelMode(QProcess::MergedChannels);
-    adbProcess->start(ADB_SCREENCAP);
+    adbProcess->start(cmd.append(SCREENCAP_ADDR));
 
     connect(adbProcess, &QProcess::readyRead, [=](){
         readFromProcess(ADB_SCREENCAP_FLAG);
@@ -140,6 +141,12 @@ void UtilADB::mkdir(const int flag){
         readFromProcess(ADB_SCREENCAP_FLAG);
     });
 
+}
+
+void UtilADB::doWork(const QString &parameter) {
+    QString result;
+    /* ... here is the expensive or blocking operation ... */
+    emit resultReady(result);
 }
 
 UtilADB::UtilADB()
