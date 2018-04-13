@@ -14,9 +14,9 @@ bool isFileExist(const QString path)
 }
 
 void WindowEmulator::updateScreencap(const QString path){
-    if(isFileExist()){
+    if(isFileExist(path)){
         QPixmap pix(path);
-        emulatorLabel->setPixmap();
+        emulatorLabel->setPixmap(pix);
     }
 }
 
@@ -25,7 +25,7 @@ void WindowEmulator::init(){
 
     emulatorBLayout = new QVBoxLayout();
     emulatorLabel = new QLabel();
-    emulatorBLayout->addWidget(QLabel);
+    emulatorBLayout->addWidget(emulatorLabel);
     setLayout(emulatorBLayout);
 
 }

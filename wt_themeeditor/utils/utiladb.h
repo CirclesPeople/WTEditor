@@ -72,8 +72,11 @@ public slots:
     void screencap();
     void mkdir(const int flag);
 
+    void doWork(const QString parameter);
+
 signals:
     void adbProcInfo(const QStringList outputList);
+    void resultReady(const QString result);
 
 private:
     void readFromProcess(const int flag);

@@ -143,7 +143,7 @@ void UtilADB::mkdir(const int flag){
 
 }
 
-void UtilADB::doWork(const QString &parameter) {
+void UtilADB::doWork(const QString parameter) {
     QString result;
     /* ... here is the expensive or blocking operation ... */
     emit resultReady(result);

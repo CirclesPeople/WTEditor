@@ -8,8 +8,8 @@ void MainWindow::init(){
     //开启新线程显示设备画面（截屏）
     utilADB->moveToThread(&workerThread);
     connect(&workerThread, &QThread::finished, utilADB, &QObject::deleteLater);
-    connect(this, &Controller::operate, utilADB, &UtilADB::doWork);
-    connect(utilADB, &UtilADB::resultReady, this, &Controller::handleResults);
+    connect(this, &MainWindow::operate, utilADB, &UtilADB::doWork);
+    connect(utilADB, &UtilADB::resultReady, this, &MainWindow::handleResults);
     workerThread.start();
 
     //初始化设置窗口
@@ -81,6 +81,10 @@ void MainWindow::onADBProcInfo(const QStringList outputList){
     }else{
         mainStatusBar->statusLabel->setText("unknow connection");
     }
+}
+
+void MainWindow::handleResults(const QString str){
+
 }
 
 MainWindow::MainWindow(QWidget *parent)

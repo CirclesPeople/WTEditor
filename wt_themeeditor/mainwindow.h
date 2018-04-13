@@ -43,9 +43,9 @@ private:
     QHBoxLayout *pageLayout;
 
 public slots:
-    void handleResults(const QString &);
+    void handleResults(const QString str);
 signals:
-    void operate(const QString &);
+    void operate(const QString str);
 };
 
 #endif // MAINWINDOW_H
