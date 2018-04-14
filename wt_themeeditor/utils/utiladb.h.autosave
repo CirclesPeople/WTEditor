@@ -50,7 +50,7 @@
 #define FONT_VALUE_ADDR "\"\/sdcard\/wt_themes\/fonts\""
 
 #define SCREENCAP_ADDR "\/sdcard\/tmp.png"
-#define SCREENCAP_ADDR_PC "screencap"
+#define SCREENCAP_ADDR_PC "screencap/tmp.png"
 
 class UtilADB:public QObject
 {

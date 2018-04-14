@@ -3,6 +3,7 @@
 
 #include "utils/UtilStyle.cpp"
 #include "configs/Config.cpp"
+#include "utils/utiladb.h"
 
 #include <QApplication>
 #include <QFile>
@@ -14,6 +15,7 @@
 #include <QDebug>
 #include <QSplashScreen>
 #include <QPixmap>
+#include <QDir>
 
 void outputMessage(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
@@ -54,9 +56,25 @@ void outputMessage(QtMsgType type, const QMessageLogContext &context, const QStr
     mutex.unlock();
 }
 
+void mkdirs(){
+    QString homePath(qApp->applicationDirPath());
+    QDir dir;
+    if(!dir.exists(homePath.append(SCREENCAP_ADDR_PC)))
+    {
+        dir.mkdir(homePath.append(SCREENCAP_ADDR_PC));
+    }
+}
+
+void init(){
+    mkdirs();
+}
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
+    //初始化
+    init();
 
     //注册MessageHandler,输出log到log.txt
     qInstallMessageHandler(outputMessage);

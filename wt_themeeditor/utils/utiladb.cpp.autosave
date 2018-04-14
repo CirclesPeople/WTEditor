@@ -160,7 +160,7 @@ void UtilADB::adbPull(const QString path){
 /*The code inside the Worker's slot would then execute in a separate thread.*/
 void UtilADB::doWork(const QString parameter) {
     QString result;
-    QString homePath(qApp->applicationDirPath());
+    QString targetPath(qApp->applicationDirPath().append(SCREENCAP_ADDR_PC));
     QString fromPath(SCREENCAP_ADDR);
 
     do{
@@ -176,7 +176,7 @@ void UtilADB::doWork(const QString parameter) {
 
 
         //adb pull出截屏文件
-        adbPull(fromPath.append(" ").append(homePath).append(SCREENCAP_ADDR_PC));
+        adbPull(fromPath.append());
 
         //adb pull延时1s
         QDateTime curPull=QDateTime::currentDateTime();
