@@ -143,14 +143,13 @@ void UtilADB::mkdir(const QString dir){
 }
 
 /* adb pull *** */
-void UtilADB::adbPull(const QString path){
+void UtilADB::adbPull(const QString cmd){
     if(adbProcess != NULL){
         adbProcess = new QProcess();
     }
 
-    QString cmd(ADB_PULL);
     adbProcess->setProcessChannelMode(QProcess::MergedChannels);
-    adbProcess->start(cmd.append(path));
+    adbProcess->start(cmd);
 
     connect(adbProcess, &QProcess::readyRead, [=](){
         readFromProcess(ADB_PULL_FLAG);
@@ -158,10 +157,13 @@ void UtilADB::adbPull(const QString path){
 }
 
 /*The code inside the Worker's slot would then execute in a separate thread.*/
-void UtilADB::doWork(const QString parameter) {
+void UtilADB::doWork() {
+    qDebug("\n\n****** doWork ******\n\n");
     QString result;
-    QString homePath(qApp->applicationDirPath());
+    QString targetPath(SCREENCAP_ADDR_PC);
     QString fromPath(SCREENCAP_ADDR);
+    QString adbPullCmd(ADB_PULL);
+    QString screenCapCmd = adbPullCmd.append(" ").append(fromPath).append(" ").append(targetPath);
 
     do{
         /* ... here is the expensive or blocking operation ... */
@@ -174,19 +176,32 @@ void UtilADB::doWork(const QString parameter) {
             nowCap=QDateTime::currentDateTime();
         } while (curCap.secsTo(nowCap)<=1);//1为需要延时的秒数
 
-
+        qDebug() << screenCapCmd;
         //adb pull出截屏文件
-        adbPull(fromPath.append(" ").append(homePath).append(SCREENCAP_ADDR_PC));
+        adbPull(screenCapCmd);
 
         //adb pull延时1s
         QDateTime curPull=QDateTime::currentDateTime();
         QDateTime nowPull;
         do{
             nowPull=QDateTime::currentDateTime();
-        } while (curPull.secsTo(nowPull)<=1);//1为需要延时的秒数
+        } while (curPull.secsTo(nowPull)<=3);//3为需要延时的秒数
 
-        emit resultReady(homePath.append(SCREENCAP_ADDR_PC));
-    }while(true)
+        emit resultReady(targetPath);
+    }while(true);
+}
+
+void UtilADB::sendBroadcast(const QString cmd){
+    if(adbProcess != NULL){
+        adbProcess = new QProcess();
+    }
+
+    adbProcess->setProcessChannelMode(QProcess::MergedChannels);
+    adbProcess->start(cmd);
+
+    connect(adbProcess, &QProcess::readyRead, [=](){
+        readFromProcess(ADB_BROADCAST_FLAG);
+    });
 }
 
 UtilADB::UtilADB()

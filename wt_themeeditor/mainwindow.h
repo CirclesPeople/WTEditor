@@ -14,6 +14,7 @@
 #include <mainmenubar.h>
 #include "utils/utiladb.h"
 #include "window/windowsettings.h"
+#include "window/windowemulator.h"
 
 class MainWindow : public QMainWindow
 {
@@ -32,6 +33,7 @@ public:
 
     UtilADB *utilADB;
     WindowSettings *winSettings;
+    WindowEmulator *winEmulator;
 
 private:
     void init();
@@ -43,9 +45,7 @@ private:
     QHBoxLayout *pageLayout;
 
 public slots:
-    void handleResults(const QString str);
-signals:
-    void operate(const QString str);
+    void handleResults(const QString path);
 };
 
 #endif // MAINWINDOW_H

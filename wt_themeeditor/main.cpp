@@ -57,11 +57,11 @@ void outputMessage(QtMsgType type, const QMessageLogContext &context, const QStr
 }
 
 void mkdirs(){
-    QString homePath(qApp->applicationDirPath());
+    qDebug("*** mkdirs ***");
     QDir dir;
-    if(!dir.exists(homePath.append(SCREENCAP_ADDR_PC)))
+    if(!dir.exists(SCREENCAP_ADDR_PC_DIR))
     {
-        dir.mkdir(homePath.append(SCREENCAP_ADDR_PC));
+        dir.mkdir(SCREENCAP_ADDR_PC_DIR);
     }
 }
 
@@ -73,12 +73,12 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    //初始化
-    init();
-
     //注册MessageHandler,输出log到log.txt
     qInstallMessageHandler(outputMessage);
     qDebug("\n\n****** main ******\n\n");
+
+    //初始化
+    init();
 
     // 初始化QSettings
     Config::initSettings();

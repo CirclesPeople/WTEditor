@@ -3,13 +3,18 @@
 #include <QDebug>
 
 void MainWindow::init(){
+
+    //初始化显示设备端屏幕截屏窗口
+    winEmulator = new WindowEmulator();
+    winEmulator->show();
+
     //初始化UtilADB对象
     utilADB = new UtilADB();
 
     //开启新线程显示设备画面（截屏）
     utilADB->moveToThread(&workerThread);
     connect(&workerThread, &QThread::finished, utilADB, &QObject::deleteLater);
-    connect(this, &MainWindow::operate, utilADB, &UtilADB::doWork);
+    connect(&workerThread, &QThread::started, utilADB, &UtilADB::doWork);
     connect(utilADB, &UtilADB::resultReady, this, &MainWindow::handleResults);
     workerThread.start();
 
@@ -84,8 +89,8 @@ void MainWindow::onADBProcInfo(const QStringList outputList){
     }
 }
 
-void MainWindow::handleResults(const QString str){
-
+void MainWindow::handleResults(const QString path){
+    winEmulator->updateScreencap(path);
 }
 
 MainWindow::MainWindow(QWidget *parent)

@@ -22,10 +22,11 @@ void WindowEmulator::updateScreencap(const QString path){
 
 /* initialise emulator window */
 void WindowEmulator::init(){
-
+    setFixedSize(300,400);
     emulatorBLayout = new QVBoxLayout();
     emulatorLabel = new QLabel();
     emulatorBLayout->addWidget(emulatorLabel);
+    emulatorLabel->setScaledContents(true);
     setLayout(emulatorBLayout);
 
 }

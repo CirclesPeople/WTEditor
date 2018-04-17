@@ -1,4 +1,6 @@
 #include "windowicon.h"
+#include "utils/utiladb.h"
+
 #include <QDragEnterEvent>
 #include <QDropEvent>
 #include <QUrl>

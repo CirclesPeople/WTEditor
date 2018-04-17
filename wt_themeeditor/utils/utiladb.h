@@ -50,7 +50,8 @@
 #define FONT_VALUE_ADDR "\"\/sdcard\/wt_themes\/fonts\""
 
 #define SCREENCAP_ADDR "\/sdcard\/tmp.png"
-#define SCREENCAP_ADDR_PC "screencap"
+#define SCREENCAP_ADDR_PC "C:/screencap/tmp.png"
+#define SCREENCAP_ADDR_PC_DIR "C:/screencap/"
 
 class UtilADB:public QObject
 {
@@ -66,7 +67,7 @@ public slots:
     void adbDevice();
     void adbKill();
     void adbPush(QString *pathFrom,QString *pathTo);
-    void adbPull();
+    void adbPull(const QString path);
     void adbInstall();
     void adbShell();
     void getADBProcessInfo();
@@ -75,8 +76,9 @@ public slots:
     void enterFactoryMode();
     void screencap();
     void mkdir(const QString dir);
+    void sendBroadcast(const QString cmd);
 
-    void doWork(const QString parameter);
+    void doWork();
 
 signals:
     void adbProcInfo(const QStringList outputList);
