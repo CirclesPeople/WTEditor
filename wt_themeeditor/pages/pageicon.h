@@ -23,7 +23,7 @@ private:
     QScrollArea *mScrollArea;
 
     BaseIconWidget *mPhoneIcon;
-    BaseIconWidget *mContactsIcon;
+    BaseIconWidget *mEmailIcon;
     BaseIconWidget *mMessagingIcon;
     BaseIconWidget *mBrowserIcon;
     BaseIconWidget *mSettingsIcon;

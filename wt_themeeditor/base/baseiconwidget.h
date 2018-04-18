@@ -30,7 +30,10 @@
 #define ICON_MUSIC_FLAG 10
 #define ICON_CLOCK "Clock"
 #define ICON_CLOCK_FLAG 11
+#define ICON_EMAIL "Email"
+#define ICON_EMAIL_FLAG 11
 
+#define ICON_SIZE 120
 
 class BaseIconWidget : public QLabel
 {

@@ -37,7 +37,7 @@ void BaseIconWidget::mouseReleaseEvent(QMouseEvent *event){
 
 void BaseIconWidget::init(){
     setAlignment(Qt::AlignCenter);
-    setFixedSize(120,120);
+    setFixedSize(ICON_SIZE,ICON_SIZE);
 }
 
 BaseIconWidget::BaseIconWidget(const QString iconName, const int showflag, const int iconflag)

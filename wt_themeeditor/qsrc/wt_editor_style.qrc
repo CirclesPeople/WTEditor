@@ -13,5 +13,27 @@
         <file>image/logo.png</file>
         <file>image/open.ico</file>
         <file>starting.png</file>
+        <file>theme_default/launcher_icons/drawable-dpi/com_wt_backup.png</file>
+        <file>theme_default/launcher_icons/drawable-dpi/com_wt_browser.png</file>
+        <file>theme_default/launcher_icons/drawable-dpi/com_wt_calculator.png</file>
+        <file>theme_default/launcher_icons/drawable-dpi/com_wt_camera.png</file>
+        <file>theme_default/launcher_icons/drawable-dpi/com_wt_clock.png</file>
+        <file>theme_default/launcher_icons/drawable-dpi/com_wt_compass.png</file>
+        <file>theme_default/launcher_icons/drawable-dpi/com_wt_download.png</file>
+        <file>theme_default/launcher_icons/drawable-dpi/com_wt_email.png</file>
+        <file>theme_default/launcher_icons/drawable-dpi/com_wt_filemanager.png</file>
+        <file>theme_default/launcher_icons/drawable-dpi/com_wt_firewall.png</file>
+        <file>theme_default/launcher_icons/drawable-dpi/com_wt_icon_bg.png</file>
+        <file>theme_default/launcher_icons/drawable-dpi/com_wt_messaging.png</file>
+        <file>theme_default/launcher_icons/drawable-dpi/com_wt_music.png</file>
+        <file>theme_default/launcher_icons/drawable-dpi/com_wt_note.png</file>
+        <file>theme_default/launcher_icons/drawable-dpi/com_wt_phone.png</file>
+        <file>theme_default/launcher_icons/drawable-dpi/com_wt_safemgr.png</file>
+        <file>theme_default/launcher_icons/drawable-dpi/com_wt_searchbox.png</file>
+        <file>theme_default/launcher_icons/drawable-dpi/com_wt_settings.png</file>
+        <file>theme_default/launcher_icons/drawable-dpi/com_wt_soundrecorder.png</file>
+        <file>theme_default/launcher_icons/drawable-dpi/com_wt_video.png</file>
+        <file>theme_default/launcher_icons/drawable-dpi/com_wt_wifi.png</file>
+        <file>theme_default/launcher_icons/drawable-dpi/com_wt_gallery.png</file>
     </qresource>
 </RCC>
