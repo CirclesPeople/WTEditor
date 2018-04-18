@@ -104,12 +104,12 @@ void WindowIcon::init(){
     mGridLayout = new QGridLayout();
 
     //默认图标
-    defaultIcon = new BaseIconWidget(QObject::tr("default"), FLAG_HIDE);
-    defaultIconM = new BaseIconWidget(QObject::tr("defaultM"), FLAG_HIDE);
-    defaultIconH = new BaseIconWidget(QObject::tr("defaultH"), FLAG_HIDE);
-    newIcon = new BaseIconWidget(QObject::tr("new"), FLAG_SHOW);
-    newIconM = new BaseIconWidget(QObject::tr("newM"), FLAG_SHOW);
-    newIconH = new BaseIconWidget(QObject::tr("newH"), FLAG_SHOW);
+    defaultIcon = new BaseIconWidget(QObject::tr("default"), FLAG_HIDE, mBaseIconWidget);
+    defaultIconM = new BaseIconWidget(QObject::tr("defaultM"), FLAG_HIDE, mBaseIconWidget);
+    defaultIconH = new BaseIconWidget(QObject::tr("defaultH"), FLAG_HIDE, mBaseIconWidget);
+    newIcon = new BaseIconWidget(QObject::tr("new"), FLAG_SHOW, mBaseIconWidget);
+    newIconM = new BaseIconWidget(QObject::tr("newM"), FLAG_SHOW, mBaseIconWidget);
+    newIconH = new BaseIconWidget(QObject::tr("newH"), FLAG_SHOW, mBaseIconWidget);
 
     //新图标
     newIcon->installEventFilter(this);
@@ -174,7 +174,8 @@ void WindowIcon::init(){
 
 }
 
-WindowIcon::WindowIcon(QWidget *parent):QWidget(parent)
+WindowIcon::WindowIcon(BaseIconWidget *baseIconWidget, QWidget *parent):QWidget(parent)
 {
+    mBaseIconWidget = baseIconWidget;
     init();
 }

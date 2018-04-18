@@ -25,7 +25,7 @@ void BaseIconWidget::contextMenuEvent(QContextMenuEvent *event)
     });
 
     menuBaseIcon->move(cursor().pos()); //让菜单显示的位置在鼠标的坐标上
-    if(mFlag==1){
+    if(isShow==1){
         menuBaseIcon->show();
     }
 }
@@ -37,12 +37,25 @@ void BaseIconWidget::mouseReleaseEvent(QMouseEvent *event){
 
 void BaseIconWidget::init(){
     setAlignment(Qt::AlignCenter);
-    setFixedSize(120,120);
+    setMinimumSize(120,120);
 }
 
-BaseIconWidget::BaseIconWidget(const QString iconName, const int flag)
+BaseIconWidget::BaseIconWidget(const QString iconName, const int showflag, const int iconflag)
 {
-    mFlag = flag;
+    BaseIconWidget(iconName,showflag);
+    mIconFlag = iconflag;
+
+}
+
+BaseIconWidget::BaseIconWidget(const QString iconName, const int showflag, BaseIconWidget *baseIconWidget)
+{
+    BaseIconWidget(iconName,showflag);
+    mBaseIconWidget = baseIconWidget;
+
+}
+
+BaseIconWidget::BaseIconWidget(const QString iconName, const int showflag){
+    isShow = showflag;
     mIconName = iconName;
     init();
 }

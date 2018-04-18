@@ -11,12 +11,13 @@
 class WindowIcon:public QWidget
 {
 public:
-    WindowIcon(QWidget *parent = 0);
+    WindowIcon(BaseIconWidget *baseIconWidget, QWidget *parent = 0);
     void showIconWindow();
 
     QString pathLittle;
     QString pathMiddle;
     QString pathHigh;
+    BaseIconWidget *mBaseIconWidget;
 
 private:
     QGridLayout *mGridLayout;

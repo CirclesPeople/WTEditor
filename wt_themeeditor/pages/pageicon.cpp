@@ -1,29 +1,35 @@
 #include "pageicon.h"
 
 #include <QMargins>
-#include <QLabel>
 #include <QPalette>
 
 void PageIcon::init(){
 
-
-
-    mWindowIcon = new WindowIcon();
     mVBLayout = new QVBoxLayout();
     mGridLayout = new QGridLayout();
     mScrollArea = new QScrollArea();
 
-    mPhoneIcon = new BaseIconWidget(QObject::tr("Phone"),FLAG_HIDE);
-    connect(mPhoneIcon,&BaseIconWidget::onClicked,mWindowIcon,&WindowIcon::showIconWindow);
+    mPhoneIcon = new BaseIconWidget(QObject::tr(ICON_PHONE),FLAG_HIDE, ICON_PHONE_FLAG);
+    connect(mPhoneIcon,&BaseIconWidget::onClicked,[=](){
+        WindowIcon *phoneWindow= new WindowIcon(mPhoneIcon);
+        phoneWindow->showIconWindow();
+    });
 
-    mContactsIcon = new BaseIconWidget(QObject::tr("Contacts"), FLAG_HIDE);
-    mMessagingIcon = new BaseIconWidget(QObject::tr("Messaging"), FLAG_HIDE);
-    mBrowserIcon = new BaseIconWidget(QObject::tr("Browser"), FLAG_HIDE);
-    mSettingsIcon = new BaseIconWidget(QObject::tr("Settings"), FLAG_HIDE);
-    mCameraIcon = new BaseIconWidget(QObject::tr("Cmamera"), FLAG_HIDE);
-    mGalleryIcon = new BaseIconWidget(QObject::tr("Gallery"), FLAG_HIDE);
-    mMusicIcon = new BaseIconWidget(QObject::tr("Music"), FLAG_HIDE);
-    mCalendarIcon = new BaseIconWidget(QObject::tr("Calendar"), FLAG_HIDE);
+    mContactsIcon = new BaseIconWidget(QObject::tr(ICON_CONTACTS),FLAG_HIDE, ICON_CONTACTS_FLAG);
+
+    mMessagingIcon = new BaseIconWidget(QObject::tr(ICON_MESSAGING),FLAG_HIDE, ICON_MESSAGING_FLAG);
+
+    mBrowserIcon = new BaseIconWidget(QObject::tr(ICON_BROWSER),FLAG_HIDE, ICON_BROWSER_FLAG);
+
+    mSettingsIcon = new BaseIconWidget(QObject::tr(ICON_SETTINGS),FLAG_HIDE, ICON_SETTINGS_FLAG);
+
+    mCameraIcon = new BaseIconWidget(QObject::tr(ICON_CAMERA),FLAG_HIDE, ICON_CAMERA_FLAG);
+
+    mGalleryIcon = new BaseIconWidget(QObject::tr(ICON_GALLERY),FLAG_HIDE, ICON_GALLERY_FLAG);
+
+    mMusicIcon = new BaseIconWidget(QObject::tr(ICON_MUSIC),FLAG_HIDE, ICON_MUSIC_FLAG);
+
+    mCalendarIcon = new BaseIconWidget(QObject::tr(ICON_CALENDAR),FLAG_HIDE, ICON_CALENDAR_FLAG);
 
     mGridLayout->addWidget(mPhoneIcon,0,0,Qt::AlignCenter);
     mGridLayout->addWidget(mContactsIcon,0,1,Qt::AlignCenter);
