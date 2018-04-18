@@ -37,25 +37,23 @@ void BaseIconWidget::mouseReleaseEvent(QMouseEvent *event){
 
 void BaseIconWidget::init(){
     setAlignment(Qt::AlignCenter);
-    setMinimumSize(120,120);
+    setFixedSize(120,120);
 }
 
 BaseIconWidget::BaseIconWidget(const QString iconName, const int showflag, const int iconflag)
 {
-    BaseIconWidget(iconName,showflag);
+    init();
+    isShow = showflag;
+    mIconName = iconName;
     mIconFlag = iconflag;
 
 }
 
 BaseIconWidget::BaseIconWidget(const QString iconName, const int showflag, BaseIconWidget *baseIconWidget)
 {
-    BaseIconWidget(iconName,showflag);
-    mBaseIconWidget = baseIconWidget;
-
-}
-
-BaseIconWidget::BaseIconWidget(const QString iconName, const int showflag){
+    init();
     isShow = showflag;
     mIconName = iconName;
-    init();
+    mBaseIconWidget = baseIconWidget;
+
 }

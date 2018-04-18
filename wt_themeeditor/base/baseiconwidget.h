@@ -39,7 +39,6 @@ class BaseIconWidget : public QLabel
 public:
     BaseIconWidget(const QString iconName, const int showflag, const int iconflag);
     BaseIconWidget(const QString iconName, const int showflag, BaseIconWidget *baseIconWidget);
-    BaseIconWidget(const QString iconName, const int showflag);
 
     BaseIconWidget *mBaseIconWidget;
 
