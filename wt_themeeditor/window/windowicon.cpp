@@ -24,10 +24,10 @@ bool WindowIcon::eventFilter(QObject *watched, QEvent *event)
             QList<QUrl> urls = de->mimeData()->urls();
 
             if (urls.isEmpty()) { return true; }
-            pathLittle = urls.first().toLocalFile();
+            pathD = urls.first().toLocalFile();
 
             // [3]: 在label上显示拖放的图片
-            QImage image(pathLittle); // QImage对I/O优化过, QPixmap对显示优化
+            QImage image(pathD); // QImage对I/O优化过, QPixmap对显示优化
             if (!image.isNull()) {
                 image = image.scaled(newIcon->size(),
                                      Qt::KeepAspectRatio,
@@ -49,10 +49,10 @@ bool WindowIcon::eventFilter(QObject *watched, QEvent *event)
             QList<QUrl> urls = de->mimeData()->urls();
 
             if (urls.isEmpty()) { return true; }
-            pathMiddle = urls.first().toLocalFile();
+            pathM = urls.first().toLocalFile();
 
             // [3]: 在label上显示拖放的图片
-            QImage image(pathMiddle); // QImage对I/O优化过, QPixmap对显示优化
+            QImage image(pathM); // QImage对I/O优化过, QPixmap对显示优化
             if (!image.isNull()) {
                 image = image.scaled(newIconM->size(),
                                      Qt::KeepAspectRatio,
@@ -74,10 +74,10 @@ bool WindowIcon::eventFilter(QObject *watched, QEvent *event)
             QList<QUrl> urls = de->mimeData()->urls();
 
             if (urls.isEmpty()) { return true; }
-            pathHigh = urls.first().toLocalFile();
+            pathH = urls.first().toLocalFile();
 
             // [3]: 在label上显示拖放的图片
-            QImage image(pathHigh); // QImage对I/O优化过, QPixmap对显示优化
+            QImage image(pathH); // QImage对I/O优化过, QPixmap对显示优化
             if (!image.isNull()) {
                 image = image.scaled(newIconH->size(),
                                      Qt::KeepAspectRatio,
@@ -126,6 +126,55 @@ void WindowIcon::setIconImg(BaseIconWidget *baseIconWidget, const int iconflag){
     }
 }
 
+void WindowIcon::applyImage(BaseIconWidget *baseIconWidget){
+    switch(baseIconWidget->mTypeFlag){
+    case NEW_FLAG:
+            //copyFileToPath(pathD, tempPath, true);
+        break;
+
+    case NEW_M_FLAG:
+
+        break;
+
+    case NEW_H_FLAG:
+
+        break;
+    }
+
+}
+
+void WindowIcon::saveImage(BaseIconWidget *baseIconWidget){
+
+}
+
+void WindowIcon::delImage(BaseIconWidget *baseIconWidget){
+
+}
+
+/* 拷贝文件 */
+int WindowIcon::copyFile(QString fromPath ,QString toPath, bool isCover)
+{
+    if (fromPath == toPath){
+        return -2;
+    }
+    if (!QFile::exists(fromPath)){
+        return 0;
+    }
+    QDir *createfile = new QDir;
+    bool exist = createfile->exists(toPath);
+    if (exist){
+        if(isCover){
+            createfile->remove(toPath);
+        }
+    }
+
+    if(!QFile::copy(fromPath, toPath))
+    {
+        return false;
+    }
+    return true;
+}
+
 /* 初始化 */
 void WindowIcon::init(){
     setFixedSize(600,400);
@@ -135,13 +184,27 @@ void WindowIcon::init(){
     //默认图标
     defaultIcon = new BaseIconWidget(QObject::tr("default"), FLAG_HIDE, mBaseIconWidget->mIconFlag, DEFAULT_FLAG);
     setIconImg(defaultIcon,mBaseIconWidget->mIconFlag);
+
     defaultIconM = new BaseIconWidget(QObject::tr("defaultM"), FLAG_HIDE, mBaseIconWidget->mIconFlag, DEFAULT_M_FLAG);
     setIconImg(defaultIconM,mBaseIconWidget->mIconFlag);
+
     defaultIconH = new BaseIconWidget(QObject::tr("defaultH"), FLAG_HIDE, mBaseIconWidget->mIconFlag, DEFAULT_H_FLAG);
     setIconImg(defaultIconH,mBaseIconWidget->mIconFlag);
+
     newIcon = new BaseIconWidget(QObject::tr("new"), FLAG_SHOW, mBaseIconWidget->mIconFlag, NEW_FLAG);
+    connect(newIcon, &BaseIconWidget::signalApply, this, &WindowIcon::applyImage);
+    connect(newIcon, &BaseIconWidget::signalSave, this, &WindowIcon::saveImage);
+    connect(newIcon, &BaseIconWidget::signalDel, this, &WindowIcon::delImage);
+
     newIconM = new BaseIconWidget(QObject::tr("newM"), FLAG_SHOW, mBaseIconWidget->mIconFlag, NEW_M_FLAG);
+    connect(newIconM, &BaseIconWidget::signalApply, this, &WindowIcon::applyImage);
+    connect(newIconM, &BaseIconWidget::signalSave, this, &WindowIcon::saveImage);
+    connect(newIconM, &BaseIconWidget::signalDel, this, &WindowIcon::delImage);
+
     newIconH = new BaseIconWidget(QObject::tr("newH"), FLAG_SHOW, mBaseIconWidget->mIconFlag, NEW_H_FLAG);
+    connect(newIconH, &BaseIconWidget::signalApply, this, &WindowIcon::applyImage);
+    connect(newIconH, &BaseIconWidget::signalSave, this, &WindowIcon::saveImage);
+    connect(newIconH, &BaseIconWidget::signalDel, this, &WindowIcon::delImage);
 
     //新图标
     newIcon->installEventFilter(this);

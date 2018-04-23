@@ -8,16 +8,26 @@
 
 #include "base/baseiconwidget.h"
 
+#define IS_COVERED true
+#define SUCCESSFUL 1
+#define NOT_EXIST 0
+#define FAILED -1
+#define REPEATED -2
+
 class WindowIcon:public QWidget
 {
 public:
     WindowIcon(BaseIconWidget *baseIconWidget, QWidget *parent = 0);
     void showIconWindow();
     void setIconImg(BaseIconWidget *baseIconWidget, const int iconflag);
+    void applyImage(BaseIconWidget *baseIconWidget);
+    void saveImage(BaseIconWidget *baseIconWidget);
+    void delImage(BaseIconWidget *baseIconWidget);
+    int copyFile(QString fromPath ,QString toPath, bool isCover);
 
-    QString pathLittle;
-    QString pathMiddle;
-    QString pathHigh;
+    QString pathD;
+    QString pathM;
+    QString pathH;
     BaseIconWidget *mBaseIconWidget;
     BaseIconWidget *mBaseIconWidgetEdit;
     int currType;

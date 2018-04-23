@@ -5,9 +5,9 @@
 
 #define CONFIG_PATH "config.ini"
 
-#define DEFAULT_PATH "defult"
-#define OUTPUT_PATH "output"
-#define CURRENT_PATH "current"
+#define DEFAULT_PATH "/defult"
+#define OUTPUT_PATH "/output"
+#define CURRENT_PATH "/current"
 
 #define INFO_AUTHOR "Bill Huang"
 #define INFO_ORG "Wingtech"
@@ -18,7 +18,9 @@ class Config{
 public:
     static void initSettings(){
         QSettings settings(CONFIG_PATH,QSettings::IniFormat);
-        QString homePath(qApp->applicationDirPath());
+        QString default_path=qApp->applicationDirPath() + DEFAULT_PATH;
+        QString output_path=qApp->applicationDirPath() + OUTPUT_PATH;
+        QString current_path=qApp->applicationDirPath() + CURRENT_PATH;
         if(!settings.contains("/devinfo/author")){
             settings.setValue("/devinfo/author", INFO_AUTHOR);
         }
@@ -32,13 +34,13 @@ public:
             settings.setValue("/devinfo/app_name", INFO_APP_NAME);
         }
         if(!settings.contains("/dir/default")){
-            settings.setValue("/dir/default", homePath.append(DEFAULT_PATH));
+            settings.setValue("/dir/default", default_path);
         }
         if(!settings.contains("/dir/output")){
-            settings.setValue("/dir/output", homePath.append(OUTPUT_PATH));
+            settings.setValue("/dir/output", output_path);
         }
         if(!settings.contains("/dir/current")){
-            settings.setValue("/dir/current", homePath.append(CURRENT_PATH));
+            settings.setValue("/dir/current", current_path);
         }
     }
 
