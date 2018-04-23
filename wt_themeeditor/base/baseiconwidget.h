@@ -33,7 +33,25 @@
 #define ICON_EMAIL "Email"
 #define ICON_EMAIL_FLAG 11
 
+#define DEFAULT_FLAG 0
+#define DEFAULT_M_FLAG 1
+#define DEFAULT_H_FLAG 2
+
+#define NEW_FLAG 0
+#define NEW_M_FLAG 1
+#define NEW_H_FLAG 2
+
 #define ICON_SIZE 120
+
+#define IMG_PHONE ":/qsrc/theme_default/launcher_icons/drawable-dpi/com_wt_phone.png"
+#define IMG_EMAIL ":/qsrc/theme_default/launcher_icons/drawable-dpi/com_wt_email.png"
+#define IMG_MESSAGING ":/qsrc/theme_default/launcher_icons/drawable-dpi/com_wt_messaging.png"
+#define IMG_BROWSER ":/qsrc/theme_default/launcher_icons/drawable-dpi/com_wt_browser.png"
+#define IMG_SETTINGS ":/qsrc/theme_default/launcher_icons/drawable-dpi/com_wt_settings.png"
+#define IMG_CAMERA ":/qsrc/theme_default/launcher_icons/drawable-dpi/com_wt_camera.png"
+#define IMG_GALLERY ":/qsrc/theme_default/launcher_icons/drawable-dpi/com_wt_gallery.png"
+#define IMG_MUSIC ":/qsrc/theme_default/launcher_icons/drawable-dpi/com_wt_music.png"
+#define IMG_CALENDAR ":/qsrc/theme_default/launcher_icons/drawable-dpi/com_wt_music.png"
 
 class BaseIconWidget : public QLabel
 {
@@ -41,14 +59,15 @@ class BaseIconWidget : public QLabel
 
 public:
     BaseIconWidget(const QString iconName, const int showflag, const int iconflag);
-    BaseIconWidget(const QString iconName, const int showflag, BaseIconWidget *baseIconWidget);
+    BaseIconWidget(const QString iconName, const int showflag, const int iconflag, const int typeflag);
 
     BaseIconWidget *mBaseIconWidget;
 
-private:
     QString mIconName;
     int isShow;
     int mIconFlag;
+    int saveFlag;
+    int mTypeFlag;
 
     void init();
 

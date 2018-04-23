@@ -97,6 +97,35 @@ void WindowIcon::showIconWindow(){
     show();
 }
 
+void WindowIcon::setIconImg(BaseIconWidget *baseIconWidget, const int iconflag){
+    switch(iconflag){
+    case ICON_PHONE_FLAG:
+        baseIconWidget->setPixmap(QPixmap(IMG_PHONE).scaled(ICON_SIZE,ICON_SIZE,Qt::KeepAspectRatio,Qt::SmoothTransformation));
+        break;
+    case ICON_EMAIL_FLAG:
+        baseIconWidget->setPixmap(QPixmap(IMG_EMAIL).scaled(ICON_SIZE,ICON_SIZE,Qt::KeepAspectRatio,Qt::SmoothTransformation));
+        break;
+    case ICON_MESSAGING_FLAG:
+        baseIconWidget->setPixmap(QPixmap(IMG_MESSAGING).scaled(ICON_SIZE,ICON_SIZE,Qt::KeepAspectRatio,Qt::SmoothTransformation));
+        break;
+    case ICON_BROWSER_FLAG:
+        baseIconWidget->setPixmap(QPixmap(IMG_BROWSER).scaled(ICON_SIZE,ICON_SIZE,Qt::KeepAspectRatio,Qt::SmoothTransformation));
+        break;
+    case ICON_SETTINGS_FLAG:
+        baseIconWidget->setPixmap(QPixmap(IMG_SETTINGS).scaled(ICON_SIZE,ICON_SIZE,Qt::KeepAspectRatio,Qt::SmoothTransformation));
+        break;
+    case ICON_CAMERA_FLAG:
+        baseIconWidget->setPixmap(QPixmap(IMG_CAMERA).scaled(ICON_SIZE,ICON_SIZE,Qt::KeepAspectRatio,Qt::SmoothTransformation));
+        break;
+    case ICON_GALLERY_FLAG:
+        baseIconWidget->setPixmap(QPixmap(IMG_GALLERY).scaled(ICON_SIZE,ICON_SIZE,Qt::KeepAspectRatio,Qt::SmoothTransformation));
+        break;
+    case ICON_CALENDAR_FLAG:
+        baseIconWidget->setPixmap(QPixmap(IMG_CALENDAR).scaled(ICON_SIZE,ICON_SIZE,Qt::KeepAspectRatio,Qt::SmoothTransformation));
+        break;
+    }
+}
+
 /* 初始化 */
 void WindowIcon::init(){
     setFixedSize(600,400);
@@ -104,12 +133,15 @@ void WindowIcon::init(){
     mGridLayout = new QGridLayout();
 
     //默认图标
-    defaultIcon = new BaseIconWidget(QObject::tr("default"), FLAG_HIDE, mBaseIconWidget);
-    defaultIconM = new BaseIconWidget(QObject::tr("defaultM"), FLAG_HIDE, mBaseIconWidget);
-    defaultIconH = new BaseIconWidget(QObject::tr("defaultH"), FLAG_HIDE, mBaseIconWidget);
-    newIcon = new BaseIconWidget(QObject::tr("new"), FLAG_SHOW, mBaseIconWidget);
-    newIconM = new BaseIconWidget(QObject::tr("newM"), FLAG_SHOW, mBaseIconWidget);
-    newIconH = new BaseIconWidget(QObject::tr("newH"), FLAG_SHOW, mBaseIconWidget);
+    defaultIcon = new BaseIconWidget(QObject::tr("default"), FLAG_HIDE, mBaseIconWidget->mIconFlag, DEFAULT_FLAG);
+    setIconImg(defaultIcon,mBaseIconWidget->mIconFlag);
+    defaultIconM = new BaseIconWidget(QObject::tr("defaultM"), FLAG_HIDE, mBaseIconWidget->mIconFlag, DEFAULT_M_FLAG);
+    setIconImg(defaultIconM,mBaseIconWidget->mIconFlag);
+    defaultIconH = new BaseIconWidget(QObject::tr("defaultH"), FLAG_HIDE, mBaseIconWidget->mIconFlag, DEFAULT_H_FLAG);
+    setIconImg(defaultIconH,mBaseIconWidget->mIconFlag);
+    newIcon = new BaseIconWidget(QObject::tr("new"), FLAG_SHOW, mBaseIconWidget->mIconFlag, NEW_FLAG);
+    newIconM = new BaseIconWidget(QObject::tr("newM"), FLAG_SHOW, mBaseIconWidget->mIconFlag, NEW_M_FLAG);
+    newIconH = new BaseIconWidget(QObject::tr("newH"), FLAG_SHOW, mBaseIconWidget->mIconFlag, NEW_H_FLAG);
 
     //新图标
     newIcon->installEventFilter(this);

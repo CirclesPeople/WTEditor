@@ -49,11 +49,12 @@ BaseIconWidget::BaseIconWidget(const QString iconName, const int showflag, const
 
 }
 
-BaseIconWidget::BaseIconWidget(const QString iconName, const int showflag, BaseIconWidget *baseIconWidget)
+BaseIconWidget::BaseIconWidget(const QString iconName, const int showflag, const int iconflag, const int typeflag)
 {
     init();
     isShow = showflag;
     mIconName = iconName;
-    mBaseIconWidget = baseIconWidget;
+    mIconFlag = iconflag;
+    mTypeFlag = typeflag;
 
 }

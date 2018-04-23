@@ -13,6 +13,7 @@ class WindowIcon:public QWidget
 public:
     WindowIcon(BaseIconWidget *baseIconWidget, QWidget *parent = 0);
     void showIconWindow();
+    void setIconImg(BaseIconWidget *baseIconWidget, const int iconflag);
 
     QString pathLittle;
     QString pathMiddle;
