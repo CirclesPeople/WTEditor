@@ -33,13 +33,13 @@
 #define ICON_EMAIL "Email"
 #define ICON_EMAIL_FLAG 11
 
-#define DEFAULT_FLAG 0
-#define DEFAULT_M_FLAG 1
-#define DEFAULT_H_FLAG 2
+#define DEFAULT_FLAG 1
+#define DEFAULT_M_FLAG 2
+#define DEFAULT_H_FLAG 3
 
-#define NEW_FLAG 0
-#define NEW_M_FLAG 1
-#define NEW_H_FLAG 2
+#define NEW_FLAG 1
+#define NEW_M_FLAG 2
+#define NEW_H_FLAG 3
 
 #define ICON_SIZE 120
 
@@ -73,9 +73,9 @@ public:
 
 signals:
     void onClicked();
-    void signalSave();
-    void signalApply();
-    void signalDel();
+    void signalSave(BaseIconWidget *baseIconWidget);
+    void signalApply(BaseIconWidget *baseIconWidget);
+    void signalDel(BaseIconWidget *baseIconWidget);
 
 protected:
     void mouseReleaseEvent(QMouseEvent *event);

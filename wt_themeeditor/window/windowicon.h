@@ -19,6 +19,8 @@ public:
     QString pathMiddle;
     QString pathHigh;
     BaseIconWidget *mBaseIconWidget;
+    BaseIconWidget *mBaseIconWidgetEdit;
+    int currType;
 
 private:
     QGridLayout *mGridLayout;
