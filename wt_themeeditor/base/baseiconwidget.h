@@ -53,6 +53,10 @@
 #define IMG_MUSIC ":/qsrc/theme_default/launcher_icons/drawable-dpi/com_wt_music.png"
 #define IMG_CALENDAR ":/qsrc/theme_default/launcher_icons/drawable-dpi/com_wt_music.png"
 
+#define icon_d_path "/icon/default"
+#define icon_m_path "/icon/middle"
+#define icon_h_path "/icon/high"
+
 class BaseIconWidget : public QLabel
 {
     Q_OBJECT

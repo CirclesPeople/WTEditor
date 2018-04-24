@@ -5,6 +5,7 @@
 #include <QGridLayout>
 #include <QLabel>
 #include <QEvent>
+#include <QSettings>
 
 #include "base/baseiconwidget.h"
 
@@ -13,6 +14,7 @@
 #define NOT_EXIST 0
 #define FAILED -1
 #define REPEATED -2
+#define CONFIG_PATH "config.ini"
 
 class WindowIcon:public QWidget
 {
@@ -24,6 +26,8 @@ public:
     void saveImage(BaseIconWidget *baseIconWidget);
     void delImage(BaseIconWidget *baseIconWidget);
     int copyFile(QString fromPath ,QString toPath, bool isCover);
+    int deleteFile(BaseIconWidget *baseIconWidget);
+    int applyFile(QString filePath);
 
     QString pathD;
     QString pathM;

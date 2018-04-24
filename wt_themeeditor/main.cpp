@@ -56,12 +56,74 @@ void outputMessage(QtMsgType type, const QMessageLogContext &context, const QStr
     mutex.unlock();
 }
 
+/* 创建工作目录、资源目录等目录 */
 void mkdirs(){
     qDebug("*** mkdirs ***");
+    QSettings settings(CONFIG_PATH,QSettings::IniFormat);
     QDir dir;
+    //创建截屏目录
     if(!dir.exists(SCREENCAP_ADDR_PC_DIR))
     {
         dir.mkdir(SCREENCAP_ADDR_PC_DIR);
+    }
+
+    //创建资源目录
+    QString cur_path=settings.value("/dir/current").toString();//当前工作区
+    if(!dir.exists(cur_path))
+    {
+        dir.mkdir(cur_path);
+    }
+    QString default_path=settings.value("/dir/default").toString();//默认
+    if(!dir.exists(default_path))
+    {
+        dir.mkdir(default_path);
+    }
+    QString output_path=settings.value("/dir/output").toString();//输出目录
+    if(!dir.exists(output_path))
+    {
+        dir.mkdir(output_path);
+    }
+
+    QString icon_path=settings.value("/dir/current").toString().append("/icon");//壁纸
+    if(!dir.exists(icon_path))
+    {
+        dir.mkdir(icon_path);
+    }
+    //QString icon_d_path=settings.value("/dir/current").toString().append("/icon").append("/default");
+    //if(!dir.exists(icon_d_path))
+    //{
+    //        dir.mkdir(icon_d_path);
+    //    }
+    //    QString icon_m_path=settings.value("/dir/current").toString().append("/icon").append("/middle");
+    //    if(!dir.exists(icon_m_path))
+    //    {
+    //        dir.mkdir(icon_m_path);
+    //    }
+    //    QString icon_h_path=settings.value("/dir/current").toString().append("/icon").append("/high");
+    //    if(!dir.exists(icon_h_path))
+    //    {
+    //        dir.mkdir(icon_h_path);
+    //    }
+
+    QString wallpaper_path=settings.value("/dir/current").toString().append("/wallpaper");//壁纸
+    if(!dir.exists(wallpaper_path))
+    {
+        dir.mkdir(wallpaper_path);
+    }
+    QString theme_path=settings.value("/dir/current").toString().append("/theme");//主题
+    if(!dir.exists(theme_path))
+    {
+        dir.mkdir(theme_path);
+    }
+    QString fonts_path=settings.value("/dir/current").toString().append("/fonts");//字体
+    if(!dir.exists(fonts_path))
+    {
+        dir.mkdir(fonts_path);
+    }
+    QString others_path=settings.value("/dir/current").toString().append("/others");//其他资源
+    if(!dir.exists(others_path))
+    {
+        dir.mkdir(others_path);
     }
 }
 

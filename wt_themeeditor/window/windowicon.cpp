@@ -126,10 +126,11 @@ void WindowIcon::setIconImg(BaseIconWidget *baseIconWidget, const int iconflag){
     }
 }
 
+/* apply icons */
 void WindowIcon::applyImage(BaseIconWidget *baseIconWidget){
     switch(baseIconWidget->mTypeFlag){
     case NEW_FLAG:
-            //copyFileToPath(pathD, tempPath, true);
+
         break;
 
     case NEW_M_FLAG:
@@ -140,18 +141,44 @@ void WindowIcon::applyImage(BaseIconWidget *baseIconWidget){
 
         break;
     }
-
 }
 
+/* save icons */
 void WindowIcon::saveImage(BaseIconWidget *baseIconWidget){
+    QSettings settings(CONFIG_PATH,QSettings::IniFormat);
+    switch(baseIconWidget->mTypeFlag){
+    case NEW_FLAG:
+        copyFile(pathD, settings.value("/dir/current").toString().append(icon_d_path), true);
+        break;
 
+    case NEW_M_FLAG:
+        copyFile(pathM, settings.value("/dir/current").toString().append(icon_m_path), true);
+        break;
+
+    case NEW_H_FLAG:
+        copyFile(pathH, settings.value("/dir/current").toString().append(icon_h_path), true);
+        break;
+    }
 }
 
+/* delete icons */
 void WindowIcon::delImage(BaseIconWidget *baseIconWidget){
+    switch(baseIconWidget->mTypeFlag){
+    case NEW_FLAG:
 
+        break;
+
+    case NEW_M_FLAG:
+
+        break;
+
+    case NEW_H_FLAG:
+
+        break;
+    }
 }
 
-/* 拷贝文件 */
+/* copy files */
 int WindowIcon::copyFile(QString fromPath ,QString toPath, bool isCover)
 {
     if (fromPath == toPath){
@@ -175,8 +202,18 @@ int WindowIcon::copyFile(QString fromPath ,QString toPath, bool isCover)
     return true;
 }
 
+int WindowIcon::deleteFile(BaseIconWidget *baseIconWidget)
+{
+return 0;
+}
+
+int WindowIcon::applyFile(QString filePath){
+return 0;
+}
+
 /* 初始化 */
 void WindowIcon::init(){
+
     setFixedSize(600,400);
 
     mGridLayout = new QGridLayout();
