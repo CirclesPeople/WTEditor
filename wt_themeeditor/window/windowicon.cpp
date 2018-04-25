@@ -204,11 +204,11 @@ int WindowIcon::copyFile(QString fromPath ,QString toPath, bool isCover)
 
 int WindowIcon::deleteFile(BaseIconWidget *baseIconWidget)
 {
-return 0;
+    return 0;
 }
 
 int WindowIcon::applyFile(QString filePath){
-return 0;
+    return 0;
 }
 
 /* 初始化 */
