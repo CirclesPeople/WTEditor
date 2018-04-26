@@ -15,15 +15,15 @@ void BaseIconWidget::contextMenuEvent(QContextMenuEvent *event)
 
     menuBaseIcon->addSeparator();
     QAction *saveAction = menuBaseIcon->addAction(tr("Save"));
-    connect(applyAction,&QAction::triggered,[=](){
+    connect(saveAction,&QAction::triggered,[=](){
         qDebug() << "Save";
         emit signalSave(this);
     });
 
     menuBaseIcon->addSeparator();
     QAction *delAction = menuBaseIcon->addAction(tr("Delete"));
-    connect(applyAction,&QAction::triggered,[=](){
-        qDebug() << "Save";
+    connect(delAction,&QAction::triggered,[=](){
+        qDebug() << "Delete";
         emit signalDel(this);
     });
 

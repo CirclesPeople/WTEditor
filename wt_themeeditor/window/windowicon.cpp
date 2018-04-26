@@ -147,8 +147,10 @@ void WindowIcon::applyImage(BaseIconWidget *baseIconWidget){
 void WindowIcon::saveImage(BaseIconWidget *baseIconWidget){
     QSettings settings(CONFIG_PATH,QSettings::IniFormat);
     int res;
-    switch(baseIconWidget->mTypeFlag){
+    int flag=baseIconWidget->mTypeFlag;
+    switch(flag){
     case NEW_FLAG:
+        qDebug() << "pathD is " << pathD;
         res = copyFile(pathD, settings.value("/dir/current").toString().append(icon_d_path), true);
         break;
 
@@ -160,7 +162,7 @@ void WindowIcon::saveImage(BaseIconWidget *baseIconWidget){
         res = copyFile(pathH, settings.value("/dir/current").toString().append(icon_h_path), true);
         break;
     }
-    qDebug() << "copyFile result is " << res;
+    qDebug() << "flag is " << flag << "copyFile result is " << res;
 }
 
 /* delete icons */
