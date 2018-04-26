@@ -6,6 +6,7 @@
 #include <QLabel>
 #include <QEvent>
 #include <QSettings>
+#include <QDebug>
 
 #include "base/baseiconwidget.h"
 

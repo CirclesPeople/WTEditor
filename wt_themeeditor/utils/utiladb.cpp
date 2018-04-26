@@ -176,7 +176,7 @@ void UtilADB::doWork() {
             nowCap=QDateTime::currentDateTime();
         } while (curCap.secsTo(nowCap)<=1);//1为需要延时的秒数
 
-        qDebug() << screenCapCmd;
+        //qDebug() << screenCapCmd;
         //adb pull出截屏文件
         adbPull(screenCapCmd);
 

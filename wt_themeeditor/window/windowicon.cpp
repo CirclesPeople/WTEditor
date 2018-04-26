@@ -146,19 +146,21 @@ void WindowIcon::applyImage(BaseIconWidget *baseIconWidget){
 /* save icons */
 void WindowIcon::saveImage(BaseIconWidget *baseIconWidget){
     QSettings settings(CONFIG_PATH,QSettings::IniFormat);
+    int res;
     switch(baseIconWidget->mTypeFlag){
     case NEW_FLAG:
-        copyFile(pathD, settings.value("/dir/current").toString().append(icon_d_path), true);
+        res = copyFile(pathD, settings.value("/dir/current").toString().append(icon_d_path), true);
         break;
 
     case NEW_M_FLAG:
-        copyFile(pathM, settings.value("/dir/current").toString().append(icon_m_path), true);
+        res = copyFile(pathM, settings.value("/dir/current").toString().append(icon_m_path), true);
         break;
 
     case NEW_H_FLAG:
-        copyFile(pathH, settings.value("/dir/current").toString().append(icon_h_path), true);
+        res = copyFile(pathH, settings.value("/dir/current").toString().append(icon_h_path), true);
         break;
     }
+    qDebug() << "copyFile result is " << res;
 }
 
 /* delete icons */
@@ -182,11 +184,13 @@ void WindowIcon::delImage(BaseIconWidget *baseIconWidget){
 int WindowIcon::copyFile(QString fromPath ,QString toPath, bool isCover)
 {
     if (fromPath == toPath){
-        return -2;
+        return REPEATED;
     }
     if (!QFile::exists(fromPath)){
-        return 0;
+        return NOT_EXIST;
     }
+
+    /*
     QDir *createfile = new QDir;
     bool exist = createfile->exists(toPath);
     if (exist){
@@ -194,12 +198,13 @@ int WindowIcon::copyFile(QString fromPath ,QString toPath, bool isCover)
             createfile->remove(toPath);
         }
     }
-
+    */
+qDebug() << fromPath << toPath;
     if(!QFile::copy(fromPath, toPath))
     {
-        return false;
+        return SUCCESSFUL;
     }
-    return true;
+    return FAILED;
 }
 
 int WindowIcon::deleteFile(BaseIconWidget *baseIconWidget)

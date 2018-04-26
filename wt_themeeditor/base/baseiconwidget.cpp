@@ -9,18 +9,21 @@ void BaseIconWidget::contextMenuEvent(QContextMenuEvent *event)
     QMenu *menuBaseIcon = new QMenu(this);
     QAction *applyAction = menuBaseIcon->addAction(tr("Apply"));
     connect(applyAction,&QAction::triggered,[=](){
+        qDebug() << "Apply";
         emit signalApply(this);
     });
 
     menuBaseIcon->addSeparator();
     QAction *saveAction = menuBaseIcon->addAction(tr("Save"));
     connect(applyAction,&QAction::triggered,[=](){
+        qDebug() << "Save";
         emit signalSave(this);
     });
 
     menuBaseIcon->addSeparator();
     QAction *delAction = menuBaseIcon->addAction(tr("Delete"));
     connect(applyAction,&QAction::triggered,[=](){
+        qDebug() << "Save";
         emit signalDel(this);
     });
 

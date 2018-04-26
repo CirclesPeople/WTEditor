@@ -89,21 +89,21 @@ void mkdirs(){
     {
         dir.mkdir(icon_path);
     }
-    //QString icon_d_path=settings.value("/dir/current").toString().append("/icon").append("/default");
-    //if(!dir.exists(icon_d_path))
-    //{
-    //        dir.mkdir(icon_d_path);
-    //    }
-    //    QString icon_m_path=settings.value("/dir/current").toString().append("/icon").append("/middle");
-    //    if(!dir.exists(icon_m_path))
-    //    {
-    //        dir.mkdir(icon_m_path);
-    //    }
-    //    QString icon_h_path=settings.value("/dir/current").toString().append("/icon").append("/high");
-    //    if(!dir.exists(icon_h_path))
-    //    {
-    //        dir.mkdir(icon_h_path);
-    //    }
+    QString icon_path_d=settings.value("/dir/current").toString().append("/icon").append("/default");
+    if(!dir.exists(icon_path_d))
+    {
+        dir.mkdir(icon_path_d);
+    }
+    QString icon_path_m=settings.value("/dir/current").toString().append("/icon").append("/middle");
+    if(!dir.exists(icon_path_m))
+    {
+        dir.mkdir(icon_path_m);
+    }
+    QString icon_path_h=settings.value("/dir/current").toString().append("/icon").append("/high");
+    if(!dir.exists(icon_path_h))
+    {
+        dir.mkdir(icon_path_h);
+    }
 
     QString wallpaper_path=settings.value("/dir/current").toString().append("/wallpaper");//壁纸
     if(!dir.exists(wallpaper_path))
