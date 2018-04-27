@@ -148,10 +148,11 @@ void WindowIcon::saveImage(BaseIconWidget *baseIconWidget){
     QSettings settings(CONFIG_PATH,QSettings::IniFormat);
     int res;
     int flag=baseIconWidget->mTypeFlag;
+    QString iconname=baseIconWidget->mIconName.append(".png");
     switch(flag){
     case NEW_FLAG:
         qDebug() << "pathD is " << pathD;
-        res = copyFile(pathD, settings.value("/dir/current").toString().append(icon_d_path), true);
+        res = copyFile(pathD, settings.value("/dir/current").toString().append(icon_d_path).append("/").append(iconname), true);
         break;
 
     case NEW_M_FLAG:
