@@ -193,7 +193,6 @@ int WindowIcon::copyFile(QString fromPath ,QString toPath, bool isCover)
         return NOT_EXIST;
     }
 
-    /*
     QDir *createfile = new QDir;
     bool exist = createfile->exists(toPath);
     if (exist){
@@ -201,8 +200,8 @@ int WindowIcon::copyFile(QString fromPath ,QString toPath, bool isCover)
             createfile->remove(toPath);
         }
     }
-    */
-qDebug() << fromPath << toPath;
+
+    qDebug() << fromPath << toPath;
     if(!QFile::copy(fromPath, toPath))
     {
         return SUCCESSFUL;
@@ -227,26 +226,26 @@ void WindowIcon::init(){
     mGridLayout = new QGridLayout();
 
     //默认图标
-    defaultIcon = new BaseIconWidget(QObject::tr("default"), FLAG_HIDE, mBaseIconWidget->mIconFlag, DEFAULT_FLAG);
+    defaultIcon = new BaseIconWidget(mBaseIconWidget->mIconName, FLAG_HIDE, mBaseIconWidget->mIconFlag, DEFAULT_FLAG);
     setIconImg(defaultIcon,mBaseIconWidget->mIconFlag);
 
-    defaultIconM = new BaseIconWidget(QObject::tr("defaultM"), FLAG_HIDE, mBaseIconWidget->mIconFlag, DEFAULT_M_FLAG);
+    defaultIconM = new BaseIconWidget(mBaseIconWidget->mIconName, FLAG_HIDE, mBaseIconWidget->mIconFlag, DEFAULT_M_FLAG);
     setIconImg(defaultIconM,mBaseIconWidget->mIconFlag);
 
-    defaultIconH = new BaseIconWidget(QObject::tr("defaultH"), FLAG_HIDE, mBaseIconWidget->mIconFlag, DEFAULT_H_FLAG);
+    defaultIconH = new BaseIconWidget(mBaseIconWidget->mIconName, FLAG_HIDE, mBaseIconWidget->mIconFlag, DEFAULT_H_FLAG);
     setIconImg(defaultIconH,mBaseIconWidget->mIconFlag);
 
-    newIcon = new BaseIconWidget(QObject::tr("new"), FLAG_SHOW, mBaseIconWidget->mIconFlag, NEW_FLAG);
+    newIcon = new BaseIconWidget(mBaseIconWidget->mIconName, FLAG_SHOW, mBaseIconWidget->mIconFlag, NEW_FLAG);
     connect(newIcon, &BaseIconWidget::signalApply, this, &WindowIcon::applyImage);
     connect(newIcon, &BaseIconWidget::signalSave, this, &WindowIcon::saveImage);
     connect(newIcon, &BaseIconWidget::signalDel, this, &WindowIcon::delImage);
 
-    newIconM = new BaseIconWidget(QObject::tr("newM"), FLAG_SHOW, mBaseIconWidget->mIconFlag, NEW_M_FLAG);
+    newIconM = new BaseIconWidget(mBaseIconWidget->mIconName, FLAG_SHOW, mBaseIconWidget->mIconFlag, NEW_M_FLAG);
     connect(newIconM, &BaseIconWidget::signalApply, this, &WindowIcon::applyImage);
     connect(newIconM, &BaseIconWidget::signalSave, this, &WindowIcon::saveImage);
     connect(newIconM, &BaseIconWidget::signalDel, this, &WindowIcon::delImage);
 
-    newIconH = new BaseIconWidget(QObject::tr("newH"), FLAG_SHOW, mBaseIconWidget->mIconFlag, NEW_H_FLAG);
+    newIconH = new BaseIconWidget(mBaseIconWidget->mIconName, FLAG_SHOW, mBaseIconWidget->mIconFlag, NEW_H_FLAG);
     connect(newIconH, &BaseIconWidget::signalApply, this, &WindowIcon::applyImage);
     connect(newIconH, &BaseIconWidget::signalSave, this, &WindowIcon::saveImage);
     connect(newIconH, &BaseIconWidget::signalDel, this, &WindowIcon::delImage);
