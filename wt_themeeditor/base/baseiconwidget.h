@@ -9,7 +9,6 @@
 #define FLAG_SHOW 1
 #define FLAG_HIDE 0
 
-
 //flags for icons
 #define ICON_SETTING "settings"
 #define ICON_SETTINGS_NAME "com_wt_settings"
@@ -86,17 +85,13 @@
 //#define IMG_CLOCK ":/qsrc/theme_default/launcher_icons/drawable-dpi/com_wt_clock.png"
 #define IMG_EMAIL ":/qsrc/theme_default/launcher_icons/drawable-dpi/com_wt_email.png"
 
-#define icon_d_path "/icon/default"
-#define icon_m_path "/icon/middle"
-#define icon_h_path "/icon/high"
-
 class BaseIconWidget : public QLabel
 {
     Q_OBJECT
 
 public:
     BaseIconWidget(const QString icon, const QString iconName, const int showflag, const int iconflag);
-    BaseIconWidget(const QString iconName, const int showflag, const int iconflag, const int typeflag);
+    BaseIconWidget(const QString icon, const QString iconName, const int showflag, const int iconflag, const int typeflag);
 
     BaseIconWidget *mBaseIconWidget;
 

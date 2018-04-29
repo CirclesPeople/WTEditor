@@ -11,6 +11,8 @@ void BaseIconWidget::contextMenuEvent(QContextMenuEvent *event)
     connect(applyAction,&QAction::triggered,[=](){
         qDebug() << "Apply";
         emit signalApply(this);
+
+
     });
 
     menuBaseIcon->addSeparator();
@@ -25,6 +27,9 @@ void BaseIconWidget::contextMenuEvent(QContextMenuEvent *event)
     connect(delAction,&QAction::triggered,[=](){
         qDebug() << "Delete";
         emit signalDel(this);
+
+        //删除图片
+        this->clear();
     });
 
     menuBaseIcon->move(cursor().pos()); //让菜单显示的位置在鼠标的坐标上
@@ -59,12 +64,12 @@ BaseIconWidget::BaseIconWidget(const QString icon, const QString iconName, const
 
 }
 
-BaseIconWidget::BaseIconWidget(const QString iconName, const int showflag, const int iconflag, const int typeflag)
+BaseIconWidget::BaseIconWidget(const QString icon, const QString iconName, const int showflag, const int iconflag, const int typeflag)
 {
     init();
     isShow = showflag;
+    mIcon = icon;
     mIconName = iconName;
     mIconFlag = iconflag;
     mTypeFlag = typeflag;
-
 }

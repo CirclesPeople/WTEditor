@@ -126,21 +126,14 @@ void WindowIcon::setIconImg(BaseIconWidget *baseIconWidget, const int iconflag){
     }
 }
 
+/* delete icons */
+void WindowIcon::delImage(BaseIconWidget *baseIconWidget){
+    //do nothing;
+}
+
 /* apply icons */
 void WindowIcon::applyImage(BaseIconWidget *baseIconWidget){
-    switch(baseIconWidget->mTypeFlag){
-    case NEW_FLAG:
-
-        break;
-
-    case NEW_M_FLAG:
-
-        break;
-
-    case NEW_H_FLAG:
-
-        break;
-    }
+    //do nothing
 }
 
 /* save icons */
@@ -152,35 +145,18 @@ void WindowIcon::saveImage(BaseIconWidget *baseIconWidget){
     switch(flag){
     case NEW_FLAG:
         qDebug() << "pathD is " << pathD;
-        res = copyFile(pathD, settings.value("/dir/current").toString().append(icon_d_path).append("/").append(iconname), true);
+        res = copyFile(pathD, settings.value("/dir/current").toString().append("/icon/").append(baseIconWidget->mIcon).append("/default/").append(iconname), true);
         break;
 
     case NEW_M_FLAG:
-        res = copyFile(pathM, settings.value("/dir/current").toString().append(icon_m_path), true);
+        res = copyFile(pathM, settings.value("/dir/current").toString().append("/icon/").append(baseIconWidget->mIcon).append("/middle/").append(iconname), true);
         break;
 
     case NEW_H_FLAG:
-        res = copyFile(pathH, settings.value("/dir/current").toString().append(icon_h_path), true);
+        res = copyFile(pathH, settings.value("/dir/current").toString().append("/icon/").append(baseIconWidget->mIcon).append("/high/").append(iconname), true);
         break;
     }
     qDebug() << "flag is " << flag << "copyFile result is " << res;
-}
-
-/* delete icons */
-void WindowIcon::delImage(BaseIconWidget *baseIconWidget){
-    switch(baseIconWidget->mTypeFlag){
-    case NEW_FLAG:
-
-        break;
-
-    case NEW_M_FLAG:
-
-        break;
-
-    case NEW_H_FLAG:
-
-        break;
-    }
 }
 
 /* copy files */
@@ -235,17 +211,17 @@ void WindowIcon::init(){
     defaultIconH = new BaseIconWidget(mBaseIconWidget->mIconName, FLAG_HIDE, mBaseIconWidget->mIconFlag, DEFAULT_H_FLAG);
     setIconImg(defaultIconH,mBaseIconWidget->mIconFlag);
 
-    newIcon = new BaseIconWidget(mBaseIconWidget->mIconName, FLAG_SHOW, mBaseIconWidget->mIconFlag, NEW_FLAG);
+    newIcon = new BaseIconWidget(mBaseIconWidget->mIcon, mBaseIconWidget->mIconName, FLAG_SHOW, mBaseIconWidget->mIconFlag, NEW_FLAG);
     connect(newIcon, &BaseIconWidget::signalApply, this, &WindowIcon::applyImage);
     connect(newIcon, &BaseIconWidget::signalSave, this, &WindowIcon::saveImage);
     connect(newIcon, &BaseIconWidget::signalDel, this, &WindowIcon::delImage);
 
-    newIconM = new BaseIconWidget(mBaseIconWidget->mIconName, FLAG_SHOW, mBaseIconWidget->mIconFlag, NEW_M_FLAG);
+    newIconM = new BaseIconWidget(mBaseIconWidget->mIcon, mBaseIconWidget->mIconName, FLAG_SHOW, mBaseIconWidget->mIconFlag, NEW_M_FLAG);
     connect(newIconM, &BaseIconWidget::signalApply, this, &WindowIcon::applyImage);
     connect(newIconM, &BaseIconWidget::signalSave, this, &WindowIcon::saveImage);
     connect(newIconM, &BaseIconWidget::signalDel, this, &WindowIcon::delImage);
 
-    newIconH = new BaseIconWidget(mBaseIconWidget->mIconName, FLAG_SHOW, mBaseIconWidget->mIconFlag, NEW_H_FLAG);
+    newIconH = new BaseIconWidget(mBaseIconWidget->mIcon, mBaseIconWidget->mIconName, FLAG_SHOW, mBaseIconWidget->mIconFlag, NEW_H_FLAG);
     connect(newIconH, &BaseIconWidget::signalApply, this, &WindowIcon::applyImage);
     connect(newIconH, &BaseIconWidget::signalSave, this, &WindowIcon::saveImage);
     connect(newIconH, &BaseIconWidget::signalDel, this, &WindowIcon::delImage);
@@ -310,7 +286,7 @@ void WindowIcon::init(){
 
     setLayout(mGridLayout);
 
-
+   // mUtilADB = new UtilADB();
 }
 
 WindowIcon::WindowIcon(BaseIconWidget *baseIconWidget, QWidget *parent):QWidget(parent)

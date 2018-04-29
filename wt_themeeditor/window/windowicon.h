@@ -9,6 +9,7 @@
 #include <QDebug>
 
 #include "base/baseiconwidget.h"
+#include "utils/utiladb.h"
 
 #define IS_COVERED true
 #define SUCCESSFUL 1
@@ -29,6 +30,8 @@ public:
     int copyFile(QString fromPath ,QString toPath, bool isCover);
     int deleteFile(BaseIconWidget *baseIconWidget);
     int applyFile(QString filePath);
+
+    UtilADB *mUtilADB;
 
     QString pathD;
     QString pathM;
