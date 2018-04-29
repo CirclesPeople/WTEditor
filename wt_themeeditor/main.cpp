@@ -56,6 +56,32 @@ void outputMessage(QtMsgType type, const QMessageLogContext &context, const QStr
     mutex.unlock();
 }
 
+void mkdirIcons(const QString icon){
+    QSettings settings(CONFIG_PATH,QSettings::IniFormat);
+    QDir dir;
+    QString icon_dir = settings.value("/dir/current").toString().append("/icon/").append(icon);
+    if(!dir.exists(icon_dir))
+    {
+        dir.mkdir(icon_dir);
+    }
+
+    QString icon_path_d=settings.value("/dir/current").toString().append("/icon/").append(icon).append("/default");
+    if(!dir.exists(icon_path_d))
+    {
+        dir.mkdir(icon_path_d);
+    }
+    QString icon_path_m=settings.value("/dir/current").toString().append("/icon/").append(icon).append("/middle");
+    if(!dir.exists(icon_path_m))
+    {
+        dir.mkdir(icon_path_m);
+    }
+    QString icon_path_h=settings.value("/dir/current").toString().append("/icon/").append(icon).append("/high");
+    if(!dir.exists(icon_path_h))
+    {
+        dir.mkdir(icon_path_h);
+    }
+}
+
 /* 创建工作目录、资源目录等目录 */
 void mkdirs(){
     qDebug("*** mkdirs ***");
@@ -84,26 +110,24 @@ void mkdirs(){
         dir.mkdir(output_path);
     }
 
-    QString icon_path=settings.value("/dir/current").toString().append("/icon");//壁纸
+    QString icon_path=settings.value("/dir/current").toString().append("/icon");//图标
     if(!dir.exists(icon_path))
     {
         dir.mkdir(icon_path);
     }
-    QString icon_path_d=settings.value("/dir/current").toString().append("/icon").append("/default");
-    if(!dir.exists(icon_path_d))
-    {
-        dir.mkdir(icon_path_d);
-    }
-    QString icon_path_m=settings.value("/dir/current").toString().append("/icon").append("/middle");
-    if(!dir.exists(icon_path_m))
-    {
-        dir.mkdir(icon_path_m);
-    }
-    QString icon_path_h=settings.value("/dir/current").toString().append("/icon").append("/high");
-    if(!dir.exists(icon_path_h))
-    {
-        dir.mkdir(icon_path_h);
-    }
+
+    mkdirIcons(ICON_SETTING);
+    mkdirIcons(ICON_CAMERA);
+    mkdirIcons(ICON_GALLERY);
+    mkdirIcons(ICON_CALENDAR);
+    mkdirIcons(ICON_PHONE);
+    mkdirIcons(ICON_CONTACTS);
+    mkdirIcons(ICON_MESSAGING);
+    mkdirIcons(ICON_BROWSER);
+    mkdirIcons(ICON_VIDEOS);
+    mkdirIcons(ICON_MUSIC);
+    mkdirIcons(ICON_CLOCK);
+    mkdirIcons(ICON_EMAIL);
 
     QString wallpaper_path=settings.value("/dir/current").toString().append("/wallpaper");//壁纸
     if(!dir.exists(wallpaper_path))
@@ -125,6 +149,7 @@ void mkdirs(){
     {
         dir.mkdir(others_path);
     }
+
 }
 
 void init(){

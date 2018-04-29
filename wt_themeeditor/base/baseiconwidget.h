@@ -57,7 +57,7 @@
 
 #define ICON_EMAIL "email"
 #define ICON_EMAIL_NAME "com_wt_email"
-#define ICON_EMAIL_FLAG 11
+#define ICON_EMAIL_FLAG 12
 
 //flags for default
 #define DEFAULT_FLAG 1
@@ -100,6 +100,7 @@ public:
 
     BaseIconWidget *mBaseIconWidget;
 
+    QStringList icons;
     QString mIconName;
     QString mIcon;
     int isShow;

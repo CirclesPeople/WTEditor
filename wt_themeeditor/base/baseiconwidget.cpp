@@ -39,6 +39,10 @@ void BaseIconWidget::mouseReleaseEvent(QMouseEvent *event){
 }
 
 void BaseIconWidget::init(){
+    icons << ICON_PHONE << ICON_CAMERA << ICON_GALLERY
+          << ICON_CALENDAR << ICON_PHONE << ICON_CONTACTS
+          << ICON_MESSAGING << ICON_BROWSER << ICON_VIDEOS
+          << ICON_MUSIC << ICON_CLOCK << ICON_EMAIL;
     setAlignment(Qt::AlignCenter);
     setFixedSize(ICON_SIZE,ICON_SIZE);
     mIconFlag=0;
