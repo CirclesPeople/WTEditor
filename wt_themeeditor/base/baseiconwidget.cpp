@@ -11,8 +11,6 @@ void BaseIconWidget::contextMenuEvent(QContextMenuEvent *event)
     connect(applyAction,&QAction::triggered,[=](){
         qDebug() << "Apply";
         emit signalApply(this);
-
-
     });
 
     menuBaseIcon->addSeparator();

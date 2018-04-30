@@ -34,7 +34,7 @@ void MainWindow::init(){
     mLayout = new QHBoxLayout();
 
     //将PageModule添加到一个pagelayout水平布局中
-    pageStackedWidget = new PageModule();
+    pageStackedWidget = new PageModule(utilADB);
     pageStackedWidget->autoFillBackground();
     pageLayout = new QHBoxLayout();
     pageLayout->addWidget(pageStackedWidget);

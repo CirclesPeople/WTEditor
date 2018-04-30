@@ -64,9 +64,7 @@ void UtilADB::readFromProcess(const int flag)
 
 /* execute adb command "adb devices" */
 void UtilADB::adbDevice(){
-    if(adbProcess != NULL){
-        adbProcess = new QProcess();
-    }
+
     adbProcess->setProcessChannelMode(QProcess::MergedChannels);
     adbProcess->start(ADB_DEVICES);
 
@@ -80,16 +78,15 @@ void UtilADB::getADBProcessInfo(){
 }
 
 /* execute adb command "adb push xxx" */
-void UtilADB::adbPush(QString *pathFrom,QString *pathTo){
-    QString command(ADB_PUSH);
-    command = command.append(pathFrom).append(pathTo);
+void UtilADB::adbPush(const QString cmd){
 
+    qDebug() << TAG << "cmd is " << cmd;
     adbProcess->setProcessChannelMode(QProcess::MergedChannels);
-    adbProcess->start(command);
+    adbProcess->start(cmd);
 
-    /*connect(adbProcess, &QProcess::readyRead, [=](){
-        //readFromProcess(ADB_DEVICES_FLAG);
-    });*/
+    connect(adbProcess, &QProcess::readyRead, [=](){
+        readFromProcess(ADB_PUSH_FLAG);
+    });
 }
 
 void UtilADB::adbInstall(){}
@@ -97,6 +94,7 @@ void UtilADB::adbInstall(){}
 void UtilADB::adbShell(){}
 
 void UtilADB::adbKill(){
+
     adbProcess->setProcessChannelMode(QProcess::MergedChannels);
     adbProcess->start(ADB_KILL);
 
@@ -114,9 +112,6 @@ void UtilADB::enterFactoryMode(){}
 
 /* adb shell screencap -p /sdcard/tmp.png*/
 void UtilADB::screencap(){
-    if(adbProcess != NULL){
-        adbProcess = new QProcess();
-    }
 
     QString cmd(ADB_SCREENCAP);
     adbProcess->setProcessChannelMode(QProcess::MergedChannels);
@@ -129,10 +124,11 @@ void UtilADB::screencap(){
 }
 
 void UtilADB::mkdir(const QString dir){
-    if(adbProcess != NULL){
-        adbProcess = new QProcess();
-    }
-    QString cmd(ADB_MKDIR);
+
+    QString tmp(ADB_MKDIR);
+    QString cmd = tmp.append(dir);
+    qDebug() << cmd;
+
     adbProcess->setProcessChannelMode(QProcess::MergedChannels);
     adbProcess->start(cmd.append(dir));
 
@@ -144,9 +140,6 @@ void UtilADB::mkdir(const QString dir){
 
 /* adb pull *** */
 void UtilADB::adbPull(const QString cmd){
-    if(adbProcess != NULL){
-        adbProcess = new QProcess();
-    }
 
     adbProcess->setProcessChannelMode(QProcess::MergedChannels);
     adbProcess->start(cmd);
@@ -176,7 +169,7 @@ void UtilADB::doWork() {
             nowCap=QDateTime::currentDateTime();
         } while (curCap.secsTo(nowCap)<=1);//1为需要延时的秒数
 
-        //qDebug() << screenCapCmd;
+        qDebug() << screenCapCmd;
         //adb pull出截屏文件
         adbPull(screenCapCmd);
 
@@ -192,9 +185,6 @@ void UtilADB::doWork() {
 }
 
 void UtilADB::sendBroadcast(const QString cmd){
-    if(adbProcess != NULL){
-        adbProcess = new QProcess();
-    }
 
     adbProcess->setProcessChannelMode(QProcess::MergedChannels);
     adbProcess->start(cmd);
@@ -206,4 +196,6 @@ void UtilADB::sendBroadcast(const QString cmd){
 
 UtilADB::UtilADB()
 {
+    TAG = "UtilADB: ";
+    adbProcess = new QProcess();
 }

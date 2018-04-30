@@ -3,7 +3,7 @@
 //初始化界面
 void PageModule::init(){
     pageGreet = new PageGreet();
-    pageIcon = new PageIcon();
+    pageIcon = new PageIcon(mUtilADB);
     pageTheme = new PageTheme();
     pageOthers = new PageOthers();
 
@@ -40,7 +40,8 @@ void PageModule::initConnects(){
 
 }
 
-PageModule::PageModule(QWidget *parent):QStackedWidget(parent){
+PageModule::PageModule(UtilADB *utilADB){
+    mUtilADB = utilADB;
     PageModule::init();
 }
 

@@ -21,7 +21,7 @@
 class WindowIcon:public QWidget
 {
 public:
-    WindowIcon(BaseIconWidget *baseIconWidget, QWidget *parent = 0);
+    WindowIcon(BaseIconWidget *baseIconWidget, UtilADB *utilADB);
     void showIconWindow();
     void setIconImg(BaseIconWidget *baseIconWidget, const int iconflag);
     void applyImage(BaseIconWidget *baseIconWidget);

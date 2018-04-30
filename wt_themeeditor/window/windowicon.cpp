@@ -132,8 +132,55 @@ void WindowIcon::delImage(BaseIconWidget *baseIconWidget){
 }
 
 /* apply icons */
-void WindowIcon::applyImage(BaseIconWidget *baseIconWidget){
-    //do nothing
+void WindowIcon::applyImage(BaseIconWidget *baseIconWidget)
+{
+    int flag=baseIconWidget->mTypeFlag;
+    QString iconname=baseIconWidget->mIconName.append(".png");
+    switch(flag)
+    {
+    case NEW_FLAG:
+    {
+        QString adbPush_D(ADB_PUSH);
+        QString dirIcon_D(ICON_VALUE_ADDR);
+        mUtilADB->mkdir(THEME_VALUE_ADDR);
+        mUtilADB->mkdir(ICON_VALUE_ADDR);
+        mUtilADB->mkdir(dirIcon_D.append(baseIconWidget->mIcon).append(SEPARATOR));
+        mUtilADB->mkdir(dirIcon_D.append(NEW_DIR_DEFAULT).append(SEPARATOR));
+
+        QString cmdDefault=adbPush_D.append(pathD).append(SEPARATOR).append(dirIcon_D).append(iconname);
+
+        mUtilADB->adbPush(cmdDefault);
+        break;
+    }
+    case NEW_M_FLAG:
+    {
+        QString adbPush_M(ADB_PUSH);
+        QString dirIcon_M(ICON_VALUE_ADDR);
+        mUtilADB->mkdir(THEME_VALUE_ADDR);
+        mUtilADB->mkdir(ICON_VALUE_ADDR);
+        mUtilADB->mkdir(dirIcon_M.append(baseIconWidget->mIcon).append(SEPARATOR));
+        mUtilADB->mkdir(dirIcon_M.append(NEW_DIR_MIDDLE).append(SEPARATOR));
+
+        QString cmdMiddle=adbPush_M.append(pathD).append(SEPARATOR).append(dirIcon_M).append(iconname);
+
+        mUtilADB->adbPush(cmdMiddle);
+        break;
+    }
+    case NEW_H_FLAG:
+    {
+        QString adbPush_H(ADB_PUSH);
+        QString dirIcon_H(ICON_VALUE_ADDR);
+        mUtilADB->mkdir(THEME_VALUE_ADDR);
+        mUtilADB->mkdir(ICON_VALUE_ADDR);
+        mUtilADB->mkdir(dirIcon_H.append(baseIconWidget->mIcon).append(SEPARATOR));
+        mUtilADB->mkdir(dirIcon_H.append(NEW_DIR_HIGH).append(SEPARATOR));
+
+        QString cmdHigh=adbPush_H.append(pathD).append(SEPARATOR).append(dirIcon_H).append(iconname);
+
+        mUtilADB->adbPush(cmdHigh);
+        break;
+    }
+    }
 }
 
 /* save icons */
@@ -286,11 +333,11 @@ void WindowIcon::init(){
 
     setLayout(mGridLayout);
 
-   // mUtilADB = new UtilADB();
 }
 
-WindowIcon::WindowIcon(BaseIconWidget *baseIconWidget, QWidget *parent):QWidget(parent)
+WindowIcon::WindowIcon(BaseIconWidget *baseIconWidget, UtilADB *utilADB)
 {
     mBaseIconWidget = baseIconWidget;
+    mUtilADB = utilADB;
     init();
 }

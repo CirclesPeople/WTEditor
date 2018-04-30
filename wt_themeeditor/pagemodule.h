@@ -8,14 +8,17 @@
 #include "pages/pageicon.h"
 #include "pages/pagetheme.h"
 #include "pages/pageothers.h"
+#include "utils/utiladb.h"
 
 class PageModule:public QStackedWidget
 {
 public:
-    explicit PageModule(QWidget *parent = 0);
+    explicit PageModule(UtilADB *utilADB);
     ~PageModule();
 
     void init();
+
+    UtilADB *mUtilADB;
 
     PageGreet *pageGreet;
     PageIcon *pageIcon;

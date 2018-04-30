@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QLabel>
 #include <QWidget>
+#include <QSettings>
 
 //is show context menu
 #define FLAG_SHOW 1
@@ -65,8 +66,13 @@
 
 //flags for new
 #define NEW_FLAG 1
+#define NEW_DIR_DEFAULT "default"
 #define NEW_M_FLAG 2
+#define NEW_DIR_MIDDLE "middle"
 #define NEW_H_FLAG 3
+#define NEW_DIR_HIGH "high"
+
+#define SEPARATOR "/"
 
 //icon default
 #define ICON_SIZE 120
@@ -92,6 +98,8 @@ class BaseIconWidget : public QLabel
 public:
     BaseIconWidget(const QString icon, const QString iconName, const int showflag, const int iconflag);
     BaseIconWidget(const QString icon, const QString iconName, const int showflag, const int iconflag, const int typeflag);
+
+    void applyFile();
 
     BaseIconWidget *mBaseIconWidget;
 

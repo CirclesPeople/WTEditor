@@ -40,16 +40,16 @@
 #define INTEGER_T "--ei "
 #define BOOLEAN_T "--ez "
 
-#define THEME_KEY_ADDR "theme_addr "
-#define THEM_VALUE_ADDR "\"\/sdcard\/wt_themes\""
-#define ICON_KEY_ADDR "icon_addr "
-#define ICON_VALUE_ADDR "\"\/sdcard\/wt_themes\/icons\""
+#define THEME_KEY_ADDR "theme_addr"
+#define THEME_VALUE_ADDR "/sdcard/wt_themes/"
+#define ICON_KEY_ADDR "icon_addr"
+#define ICON_VALUE_ADDR "/sdcard/wt_themes/icons/"
 #define WALLPAPER_KEY_ADDR "wallpaper_addr "
-#define WALLPAPER_VALUE_ADDR "\"\/sdcard\/wt_themes\/wallpapers\""
+#define WALLPAPER_VALUE_ADDR "/sdcard/wt_themes/wallpapers/ "
 #define FONT_KEY_ADDR "font_addr "
-#define FONT_VALUE_ADDR "\"\/sdcard\/wt_themes\/fonts\""
+#define FONT_VALUE_ADDR "/sdcard/wt_themes/fonts/ "
 
-#define SCREENCAP_ADDR "\/sdcard\/tmp.png"
+#define SCREENCAP_ADDR "/sdcard/tmp.png"
 #define SCREENCAP_ADDR_PC "C:/screencap/tmp.png"
 #define SCREENCAP_ADDR_PC_DIR "C:/screencap/"
 
@@ -60,13 +60,14 @@ public:
     UtilADB();
 
     QStringList outputList;
+    QString TAG;
 
     void initConnects();
 
 public slots:
     void adbDevice();
     void adbKill();
-    void adbPush(QString *pathFrom,QString *pathTo);
+    void adbPush(const QString cmd);
     void adbPull(const QString path);
     void adbInstall();
     void adbShell();

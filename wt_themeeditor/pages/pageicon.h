@@ -14,8 +14,9 @@
 class PageIcon:public QWidget
 {
 public:
-    PageIcon(QWidget *parent = 0);
+    PageIcon(UtilADB *utilADB);
     ~PageIcon();
+    UtilADB *mUtilADB;
 
 private:
     QVBoxLayout *mVBLayout;
