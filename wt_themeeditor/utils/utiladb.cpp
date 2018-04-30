@@ -14,11 +14,11 @@ void UtilADB::readFromProcess(const int flag)
     QString output = QString::fromUtf8(adbProcess->readAll()).trimmed();
     qDebug() << output;
     outputList = output.split("\r\n");
-    qDebug() << "readFromProcess()" << "flag is " << flag << "; outputList's size is " << outputList.size();
+    //qDebug() << "readFromProcess()" << "flag is " << flag << "; outputList's size is " << outputList.size();
 
     switch (flag) {
     case ADB_DEVICES_FLAG:
-        qDebug() <<"readFromProcess" << "+++ADB_DEVICES_FLAG+++";
+        //qDebug() <<"readFromProcess" << "+++ADB_DEVICES_FLAG+++";
         emit adbProcInfo(outputList);
 
         break;
@@ -71,6 +71,7 @@ void UtilADB::adbDevice(){
     connect(adbProcess, &QProcess::readyRead, [=](){
         readFromProcess(ADB_DEVICES_FLAG);
     });
+    adbProcess->waitForFinished();
 }
 
 void UtilADB::getADBProcessInfo(){
@@ -87,6 +88,7 @@ void UtilADB::adbPush(const QString cmd){
     connect(adbProcess, &QProcess::readyRead, [=](){
         readFromProcess(ADB_PUSH_FLAG);
     });
+    adbProcess->waitForFinished();
 }
 
 void UtilADB::adbInstall(){}
@@ -121,6 +123,8 @@ void UtilADB::screencap(){
         readFromProcess(ADB_SCREENCAP_FLAG);
     });
 
+    adbProcess->waitForFinished();
+
 }
 
 void UtilADB::mkdir(const QString dir){
@@ -130,11 +134,12 @@ void UtilADB::mkdir(const QString dir){
     qDebug() << cmd;
 
     adbProcess->setProcessChannelMode(QProcess::MergedChannels);
-    adbProcess->start(cmd.append(dir));
+    adbProcess->start(cmd);
 
     connect(adbProcess, &QProcess::readyRead, [=](){
         readFromProcess(ADB_MKDIR_FLAG);
     });
+    adbProcess->waitForFinished();
 
 }
 
@@ -147,6 +152,8 @@ void UtilADB::adbPull(const QString cmd){
     connect(adbProcess, &QProcess::readyRead, [=](){
         readFromProcess(ADB_PULL_FLAG);
     });
+
+    adbProcess->waitForFinished();
 }
 
 /*The code inside the Worker's slot would then execute in a separate thread.*/
@@ -158,30 +165,28 @@ void UtilADB::doWork() {
     QString adbPullCmd(ADB_PULL);
     QString screenCapCmd = adbPullCmd.append(" ").append(fromPath).append(" ").append(targetPath);
 
+    /* ... here is the expensive or blocking operation ... */
+    screencap();//截屏
+
+    //screencap延时1s
+    QDateTime curCap=QDateTime::currentDateTime();
+    QDateTime nowCap;
     do{
-        /* ... here is the expensive or blocking operation ... */
-        screencap();//截屏
+        nowCap=QDateTime::currentDateTime();
+    } while (curCap.secsTo(nowCap)<=1);//1为需要延时的秒数
 
-        //screencap延时1s
-        QDateTime curCap=QDateTime::currentDateTime();
-        QDateTime nowCap;
-        do{
-            nowCap=QDateTime::currentDateTime();
-        } while (curCap.secsTo(nowCap)<=1);//1为需要延时的秒数
+    //qDebug() << screenCapCmd;
+    //adb pull出截屏文件
+    adbPull(screenCapCmd);
 
-        qDebug() << screenCapCmd;
-        //adb pull出截屏文件
-        adbPull(screenCapCmd);
+    //adb pull延时1s
+    QDateTime curPull=QDateTime::currentDateTime();
+    QDateTime nowPull;
+    do{
+        nowPull=QDateTime::currentDateTime();
+    } while (curPull.secsTo(nowPull)<=1);//1为需要延时的秒数
 
-        //adb pull延时1s
-        QDateTime curPull=QDateTime::currentDateTime();
-        QDateTime nowPull;
-        do{
-            nowPull=QDateTime::currentDateTime();
-        } while (curPull.secsTo(nowPull)<=3);//3为需要延时的秒数
-
-        emit resultReady(targetPath);
-    }while(true);
+    emit resultReady(targetPath);
 }
 
 void UtilADB::sendBroadcast(const QString cmd){

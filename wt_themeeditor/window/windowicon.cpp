@@ -147,7 +147,7 @@ void WindowIcon::applyImage(BaseIconWidget *baseIconWidget)
         mUtilADB->mkdir(dirIcon_D.append(baseIconWidget->mIcon).append(SEPARATOR));
         mUtilADB->mkdir(dirIcon_D.append(NEW_DIR_DEFAULT).append(SEPARATOR));
 
-        QString cmdDefault=adbPush_D.append(pathD).append(SEPARATOR).append(dirIcon_D).append(iconname);
+        QString cmdDefault=adbPush_D.append(pathD).append(" ").append(dirIcon_D).append(iconname);
 
         mUtilADB->adbPush(cmdDefault);
         break;
@@ -161,7 +161,7 @@ void WindowIcon::applyImage(BaseIconWidget *baseIconWidget)
         mUtilADB->mkdir(dirIcon_M.append(baseIconWidget->mIcon).append(SEPARATOR));
         mUtilADB->mkdir(dirIcon_M.append(NEW_DIR_MIDDLE).append(SEPARATOR));
 
-        QString cmdMiddle=adbPush_M.append(pathD).append(SEPARATOR).append(dirIcon_M).append(iconname);
+        QString cmdMiddle=adbPush_M.append(pathD).append(" ").append(dirIcon_M).append(iconname);
 
         mUtilADB->adbPush(cmdMiddle);
         break;
@@ -175,7 +175,7 @@ void WindowIcon::applyImage(BaseIconWidget *baseIconWidget)
         mUtilADB->mkdir(dirIcon_H.append(baseIconWidget->mIcon).append(SEPARATOR));
         mUtilADB->mkdir(dirIcon_H.append(NEW_DIR_HIGH).append(SEPARATOR));
 
-        QString cmdHigh=adbPush_H.append(pathD).append(SEPARATOR).append(dirIcon_H).append(iconname);
+        QString cmdHigh=adbPush_H.append(pathD).append(" ").append(dirIcon_H).append(iconname);
 
         mUtilADB->adbPush(cmdHigh);
         break;
