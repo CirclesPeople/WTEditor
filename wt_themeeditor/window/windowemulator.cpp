@@ -3,6 +3,19 @@
 
 double WindowEmulator::mScale = 1;
 
+void WindowEmulator::contextMenuEvent(QContextMenuEvent *event)
+{
+    QMenu *menuBaseIcon = new QMenu(this);
+    QAction *applyAction = menuBaseIcon->addAction(tr("Refresh"));
+    connect(applyAction,&QAction::triggered,[=](){
+        qDebug() << "Refresh";
+        emit signalRefresh();
+    });
+
+    menuBaseIcon->move(cursor().pos()); //让菜单显示的位置在鼠标的坐标上
+    menuBaseIcon->show();
+}
+
 bool isFileExist(const QString path)
 {
     QFile file(path);

@@ -5,9 +5,12 @@
 #include <QLabel>
 #include <QVBoxLayout>
 #include <QFile>
+#include <QMenu>
+#include <QDebug>
 
 class WindowEmulator:public QWidget
 {
+    Q_OBJECT
 public:
     static double mScale;
 
@@ -18,6 +21,11 @@ public:
     QVBoxLayout *emulatorBLayout;
     QLabel *emulatorLabel;
 
+signals:
+    void signalRefresh();
+
+protected:
+    void contextMenuEvent(QContextMenuEvent *event);
 
 };
 

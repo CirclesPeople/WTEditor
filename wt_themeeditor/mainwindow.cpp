@@ -18,6 +18,8 @@ void MainWindow::init(){
     connect(utilADB, &UtilADB::resultReady, this, &MainWindow::handleResults);
     workerThread.start();
 
+    connect(winEmulator, &WindowEmulator::signalRefresh, utilADB, &UtilADB::doWork);
+
     //初始化设置窗口
     winSettings = new WindowSettings();
 
