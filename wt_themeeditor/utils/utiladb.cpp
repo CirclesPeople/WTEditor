@@ -88,7 +88,10 @@ void UtilADB::adbPush(const QString cmd){
     connect(adbProcess, &QProcess::readyRead, [=](){
         readFromProcess(ADB_PUSH_FLAG);
     });
-    adbProcess->waitForFinished();
+
+    connect(adbProcess, &QProcess::waitForFinished, [=](){
+        sendBroadcast(ADB_BROADCAST);
+    });
 }
 
 void UtilADB::adbInstall(){}
@@ -197,6 +200,8 @@ void UtilADB::sendBroadcast(const QString cmd){
     connect(adbProcess, &QProcess::readyRead, [=](){
         readFromProcess(ADB_BROADCAST_FLAG);
     });
+
+    adbProcess->waitForFinished();
 }
 
 UtilADB::UtilADB()
