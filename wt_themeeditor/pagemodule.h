@@ -6,7 +6,7 @@
 
 #include "pages/pagegreet.h"
 #include "pages/pageicon.h"
-#include "pages/pagetheme.h"
+#include "pages/pagewallpapers.h"
 #include "pages/pageothers.h"
 #include "utils/utiladb.h"
 
@@ -22,7 +22,7 @@ public:
 
     PageGreet *pageGreet;
     PageIcon *pageIcon;
-    PageTheme *pageTheme;
+    PageWallPapers *pageWallPapers;
     PageOthers *pageOthers;
 
     void setGreetPage();

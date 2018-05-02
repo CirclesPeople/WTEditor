@@ -17,7 +17,7 @@ public:
 
     QPushButton *greetBtn;
     QPushButton *iconBtn;
-    QPushButton *themeBtn;
+    QPushButton *wallpapersBtn;
     QPushButton *othersBtn;
 
     PageModule *mPageModule;

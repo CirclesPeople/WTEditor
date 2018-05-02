@@ -18,13 +18,13 @@ void TabModule::init(){
     connect(greetBtn,&QPushButton::released,mPageModule,&PageModule::setGreetPage);
     iconBtn= new QPushButton(QIcon(":/qsrc/image/icon.ico"), QObject::tr("Icon"));
     connect(iconBtn,&QPushButton::released,mPageModule,&PageModule::setIconPage);
-    themeBtn= new QPushButton(QIcon(":/qsrc/image/theme.ico"), QObject::tr("Theme"));
-    connect(themeBtn,&QPushButton::released,mPageModule,&PageModule::setThemePage);
+    wallpapersBtn= new QPushButton(QIcon(":/qsrc/image/theme.ico"), QObject::tr("Wallpaper"));
+    connect(wallpapersBtn,&QPushButton::released,mPageModule,&PageModule::setThemePage);
     othersBtn= new QPushButton(QIcon(":/qsrc/image/others.ico"), QObject::tr("Others"));
     connect(othersBtn,&QPushButton::released,mPageModule,&PageModule::setOthersPage);
 
     addWidget(greetBtn);
     addWidget(iconBtn);
-    addWidget(themeBtn);
+    addWidget(wallpapersBtn);
     addWidget(othersBtn);    
 }

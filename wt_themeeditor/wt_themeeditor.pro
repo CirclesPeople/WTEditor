@@ -31,7 +31,6 @@ SOURCES += \
     pages/pagegreet.cpp \
     pages/pageicon.cpp \
     pages/pageothers.cpp \
-    pages/pagetheme.cpp \
     test/testmainwindow.cpp \
     utils/utiladb.cpp \
     main.cpp \
@@ -44,7 +43,9 @@ SOURCES += \
     window/windowicon.cpp \
     window/windowsettings.cpp \
     utils/utilstyle.cpp \
-    window/windowemulator.cpp
+    window/windowemulator.cpp \
+    pages/pagewallpapers.cpp \
+    base/basewallpaperwidget.cpp
 
 HEADERS += \
     base/baseiconwidget.h \
@@ -53,7 +54,6 @@ HEADERS += \
     pages/pagegreet.h \
     pages/pageicon.h \
     pages/pageothers.h \
-    pages/pagetheme.h \
     test/testmainwindow.h \
     utils/utiladb.h \
     mainmenubar.h \
@@ -64,7 +64,9 @@ HEADERS += \
     tabmodule.h \
     window/windowicon.h \
     window/windowsettings.h \
-    window/windowemulator.h
+    window/windowemulator.h \
+    pages/pagewallpapers.h \
+    base/basewallpaperwidget.h
 
 FORMS += \
     testmainwindow.ui

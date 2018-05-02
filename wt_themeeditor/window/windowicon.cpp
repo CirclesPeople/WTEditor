@@ -150,6 +150,7 @@ void WindowIcon::applyImage(BaseIconWidget *baseIconWidget)
         QString cmdDefault=adbPush_D.append(pathD).append(" ").append(dirIcon_D).append(iconname);
 
         mUtilADB->adbPush(cmdDefault);
+        mUtilADB->sendBroadcast(ADB_BROADCAST);
         break;
     }
     case NEW_M_FLAG:
@@ -164,6 +165,7 @@ void WindowIcon::applyImage(BaseIconWidget *baseIconWidget)
         QString cmdMiddle=adbPush_M.append(pathD).append(" ").append(dirIcon_M).append(iconname);
 
         mUtilADB->adbPush(cmdMiddle);
+        mUtilADB->sendBroadcast(ADB_BROADCAST);
         break;
     }
     case NEW_H_FLAG:
@@ -178,6 +180,7 @@ void WindowIcon::applyImage(BaseIconWidget *baseIconWidget)
         QString cmdHigh=adbPush_H.append(pathD).append(" ").append(dirIcon_H).append(iconname);
 
         mUtilADB->adbPush(cmdHigh);
+        mUtilADB->sendBroadcast(ADB_BROADCAST);
         break;
     }
     }

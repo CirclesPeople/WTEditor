@@ -4,12 +4,12 @@
 void PageModule::init(){
     pageGreet = new PageGreet();
     pageIcon = new PageIcon(mUtilADB);
-    pageTheme = new PageTheme();
+    pageWallPapers = new PageWallPapers();
     pageOthers = new PageOthers();
 
     addWidget(pageGreet);
     addWidget(pageIcon);
-    addWidget(pageTheme);
+    addWidget(pageWallPapers);
     addWidget(pageOthers);
 
 }

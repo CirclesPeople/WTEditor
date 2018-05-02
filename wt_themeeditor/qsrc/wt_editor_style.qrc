@@ -35,5 +35,7 @@
         <file>theme_default/launcher_icons/drawable-dpi/com_wt_video.png</file>
         <file>theme_default/launcher_icons/drawable-dpi/com_wt_wifi.png</file>
         <file>theme_default/launcher_icons/drawable-dpi/com_wt_gallery.png</file>
+        <file>theme_default/wallpapers/com_wt_wallpaper.jpg</file>
+        <file>theme_default/keyguards/com_wt_keyguard.jpg</file>
     </qresource>
 </RCC>

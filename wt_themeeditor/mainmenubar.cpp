@@ -12,9 +12,9 @@ void MainMenuBar::init()
     fileMenu->addSeparator();
     fileMenu->addAction("Export");
     fileMenu->addSeparator();
-    fileMenu->addAction("Apply");
+    fileMenu->addAction("Pack Resources");
     fileMenu->addSeparator();
-    fileMenu->addAction("Apply All");
+    fileMenu->addAction("Apply Resources");
     fileMenu->addSeparator();
 
     QMenu *toolsMenu=addMenu("Tools");
