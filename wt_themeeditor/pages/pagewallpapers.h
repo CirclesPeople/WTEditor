@@ -24,7 +24,8 @@ public:
 
     void init();
     QString *mTag;
-    QString mImagePath;
+    QString mImagePathWallpaper;
+    QString mImagePathKeyguard;
 
     QHBoxLayout *mHLayout;
     BaseWallpaperWidget *mWallpapper;
